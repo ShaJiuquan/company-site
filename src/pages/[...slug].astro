@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Home from '../views/Home.astro';
+import Products from '../views/Products.astro';
+import About from '../views/About.astro';
+import Contact from '../views/Contact.astro';
+import Solutions from '../views/Solutions.astro';
+import Industries from '../views/Industries.astro';
+import type { Language, Page } from '../data/site';
+export function getStaticPaths() {
+  return (['zh', 'en'] as Language[]).flatMap(lang => (['home', 'solutions', 'industries', 'products', 'about', 'contact'] as Page[]).map(page => ({
+    params: { slug: [lang === 'en' ? 'en' : '', page === 'home' ? '' : page].filter(Boolean).join('/') || undefined },
+    props: { lang, page },
+  })));
+}
+const { lang, page } = Astro.props as { lang: Language; page: Page };
+const View = { home: Home, solutions: Solutions, industries: Industries, products: Products, about: About, contact: Contact }[page];
+---
+<Layout lang={lang} page={page}><View lang={lang} /></Layout>

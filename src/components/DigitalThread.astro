@@ -1,0 +1,30 @@
+---
+import { content, type Language } from '../data/site';
+const { lang } = Astro.props as { lang: Language };
+const t = content[lang];
+const accessibleLabel = `${t.sampleId}: ${t.steps.map(s => `${s.title} (${s.detail})`).join(' → ')}. ${t.workflowNote}`;
+---
+<figure class="thread-figure">
+  <div class="thread-heading"><span class="thread-id mono">SAMPLE ID</span><span>{t.threadCaption}</span></div>
+  <svg class="thread-wide" viewBox="0 0 1080 190" role="img" aria-label={accessibleLabel}>
+    <path d="M108 57H972" stroke="var(--accent)" stroke-width="2"/>
+    {t.steps.map((step, i) => <g transform={`translate(${108 + i * 216},57)`}>
+      <circle r="27" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text y="5" text-anchor="middle" fill="var(--accent)" font-family="ui-monospace, monospace" font-size="14">{String(i + 1).padStart(2,'0')}</text>
+      <text y="67" text-anchor="middle" fill="var(--text)" font-size="18" font-weight="600">{step.title}</text>
+      <text y="95" text-anchor="middle" fill="var(--muted)" font-size="13">{step.detail}</text>
+      {i < 4 && <path d="m113-5 5 5-5 5" fill="none" stroke="var(--accent)" stroke-width="1.5"/>}
+    </g>)}
+  </svg>
+  <svg class="thread-narrow" viewBox="0 0 320 415" role="img" aria-label={accessibleLabel}>
+    <path d="M36 35v320" stroke="var(--accent)" stroke-width="2"/>
+    {t.steps.map((step, i) => <g transform={`translate(36,${35 + i * 80})`}>
+      <circle r="20" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text y="5" text-anchor="middle" fill="var(--accent)" font-family="ui-monospace, monospace" font-size="13">{String(i + 1).padStart(2,'0')}</text>
+      <text x="43" y="-3" fill="var(--text)" font-size="18" font-weight="600">{step.title}</text>
+      <text x="43" y="21" fill="var(--muted)" font-size="13">{step.detail}</text>
+      {i < 4 && <path d="m-4 39 4 5 4-5" fill="none" stroke="var(--accent)" stroke-width="1.5"/>}
+    </g>)}
+  </svg>
+  <figcaption>{t.workflowNote}</figcaption>
+</figure>

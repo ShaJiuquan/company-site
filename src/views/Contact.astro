@@ -1,0 +1,12 @@
+---
+import { company, content, type Language } from '../data/site';
+import Icon from '../components/Icon.astro';
+const { lang } = Astro.props as { lang: Language };
+const p = content[lang].contactPage;
+const placeholderEmail = company.email.startsWith('{{');
+---
+<section class="page-intro container"><p class="eyebrow">{p.eyebrow}</p><h1 class="preserve-lines">{p.title}</h1><p class="intro-description">{p.intro}</p></section>
+<section class="contact-content container">
+  <div class="email-card"><span class="product-icon"><Icon name="mail"/></span><h2>{p.emailTitle}</h2><a class="email-address" href={`mailto:${company.email}`}>{company.email}</a>{placeholderEmail && <p class="placeholder-note">{p.placeholder}</p>}<a class="button primary" href={`mailto:${company.email}`}>{p.emailAction}<Icon name="arrow"/></a><p class="small muted">{p.note}</p></div>
+  <div class="contact-topics"><h2>{p.topicsTitle}</h2><ol>{p.topics.map(topic => <li>{topic}</li>)}</ol></div>
+</section>

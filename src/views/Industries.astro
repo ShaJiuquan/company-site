@@ -1,0 +1,11 @@
+---
+import { type Language } from '../data/site';
+import { marketing } from '../data/marketing';
+import IndustryArt from '../components/IndustryArt.astro';
+import StatusBadge from '../components/StatusBadge.astro';
+const { lang } = Astro.props as { lang: Language };
+const m = marketing[lang];
+const p = m.industriesPage;
+---
+<section class="page-intro container"><p class="eyebrow">{p.eyebrow}</p><h1 class="preserve-lines">{p.title}</h1><p class="intro-description">{p.intro}</p><p class="status-legend">{p.disclaimer}</p></section>
+<div class="container industry-details">{m.industries.map(industry => <article class="industry-detail" id={industry.id}><div class="industry-detail-heading"><div class="industry-art-wrap"><IndustryArt kind={industry.id as 'semiconductors'|'quantum-materials'}/><span class="industry-art-label mono">{industry.code}</span></div><div><p class="eyebrow">{industry.audience}</p><h2>{industry.title}</h2><p>{industry.intro}</p></div></div><div class="industry-detail-body"><section><h3>{p.challenge}</h3><p>{industry.problem}</p></section><section><h3>{p.direction}</h3><p>{industry.direction}</p></section><section><h3>{p.scenario}</h3><ul class="feature-list">{industry.scenarios.map(feature => <li><span>{feature.text}</span><StatusBadge status={feature.status} lang={lang}/></li>)}</ul></section></div></article>)}</div>

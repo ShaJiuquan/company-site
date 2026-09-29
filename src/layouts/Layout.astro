@@ -1,0 +1,87 @@
+---
+import { company, content, type Language, type Page } from '../data/site';
+import Icon from '../components/Icon.astro';
+import '../styles/global.css';
+interface Props { lang: Language; page: Page; }
+const { lang, page } = Astro.props;
+const t = content[lang];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const href = (p: Page, language = lang) => `${base}/${language === 'en' ? 'en/' : ''}${p === 'home' ? '' : `${p}/`}`;
+const pageTitle = page === 'home' ? (lang === 'zh' ? '材料实验室的数字主线' : 'A digital thread for materials laboratories') : t.nav[page];
+const canonical = new URL(href(page), Astro.site);
+---
+<!doctype html>
+<html lang={lang === 'zh' ? 'zh-CN' : 'en'} data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={t.description} />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f4f6f2" />
+    <title>{company.name} · {pageTitle}</title>
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="zh-CN" href={new URL(href(page, 'zh'), Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL(href(page, 'en'), Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(href(page, 'zh'), Astro.site)} />
+    <script is:inline>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('company-site-theme'); } catch {}
+        if (theme !== 'light' && theme !== 'dark') theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t.skip}</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href={href('home')} aria-label={`${company.name} ${t.nav.home}`}>
+          <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="m20 4 14 8v16l-14 8-14-8V12Z" stroke="currentColor" stroke-width="1.6"/><path d="m6 12 14 8 14-8M20 4v32" stroke="currentColor" stroke-width="1.6"/><circle cx="20" cy="20" r="4" fill="currentColor"/></svg>
+          <span>{company.name}</span>
+        </a>
+        <nav class="main-nav" aria-label={t.menu}>
+          {(Object.keys(t.nav) as Page[]).filter(p => p !== 'home').map(p => <a href={href(p)} aria-current={p === page ? 'page' : undefined}>{t.nav[p]}</a>)}
+        </nav>
+        <div class="header-tools">
+          <a class="language-link" href={href(page, lang === 'zh' ? 'en' : 'zh')} aria-label={t.languageLabel} lang={lang === 'zh' ? 'en' : 'zh-CN'}>{t.otherLanguage}</a>
+          <button class="theme-toggle" type="button" aria-label={t.theme} data-light-label={t.light} data-dark-label={t.dark}>
+            <span class="sun-icon"><Icon name="sun" /></span><span class="moon-icon"><Icon name="moon" /></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <div><a class="footer-brand" href={href('home')}>{company.name}</a><p>{t.footerText}</p></div>
+        <nav aria-label={lang === 'zh' ? '页脚导航' : 'Footer navigation'}>{(Object.keys(t.nav) as Page[]).map(p => <a href={href(p)}>{t.nav[p]}</a>)}</nav>
+      </div>
+      <div class="container footer-bottom"><span>© {new Date().getFullYear()} {company.name}</span><span>{t.footerNote}</span><span class="mono">MATERIALS / DIGITAL THREAD</span></div>
+    </footer>
+    <script>
+      const button = document.querySelector<HTMLButtonElement>('.theme-toggle');
+      const update = () => {
+        const dark = document.documentElement.dataset.theme === 'dark';
+        if (button) button.setAttribute('aria-label', (dark ? button.dataset.lightLabel : button.dataset.darkLabel) || 'Toggle color theme');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#101c21' : '#f4f6f2');
+      };
+      update();
+      button?.addEventListener('click', () => {
+        const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = theme;
+        try { localStorage.setItem('company-site-theme', theme); } catch {}
+        update();
+      });
+      matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        let stored;
+        try { stored = localStorage.getItem('company-site-theme'); } catch {}
+        if (stored !== 'light' && stored !== 'dark') {
+          document.documentElement.dataset.theme = event.matches ? 'dark' : 'light';
+          update();
+        }
+      });
+    </script>
+  </body>
+</html>

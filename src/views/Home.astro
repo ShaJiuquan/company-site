@@ -1,0 +1,60 @@
+---
+import { content, type Language } from '../data/site';
+import { marketing } from '../data/marketing';
+import StatusBadge from '../components/StatusBadge.astro';
+import Icon from '../components/Icon.astro';
+import SampleVisual from '../components/SampleVisual.astro';
+import DigitalThread from '../components/DigitalThread.astro';
+import IndustryArt from '../components/IndustryArt.astro';
+const { lang } = Astro.props as { lang: Language };
+const t = content[lang];
+const m = marketing[lang];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const href = (page: string) => `${base}/${lang === 'en' ? 'en/' : ''}${page}/`;
+---
+<section class="marketing-hero">
+  <div class="hero container">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="tiny-cross" aria-hidden="true">+</span> {m.heroEyebrow}</p>
+      <h1><span>{m.hero[0]}</span><span class="accent-text">{m.hero[1]}</span></h1>
+      <p class="hero-description">{m.heroDescription}</p>
+      <div class="button-row"><a class="button primary" href={href('solutions')}>{m.heroAction}<Icon name="arrow"/></a><a class="button secondary" href={href('contact')}>{m.heroSecondary}</a></div>
+      <p class="hero-state">{m.heroFootnote}</p>
+    </div>
+    <SampleVisual lang={lang}/>
+  </div>
+  <div class="container hero-bottom"><span class="mono">GROWTH → MEASUREMENT → INSIGHT</span><span>{lang === 'zh' ? '材料实验室的数字主线' : 'A DIGITAL THREAD FOR MATERIALS LABS'}</span></div>
+</section>
+<div class="industry-strip container" aria-label={lang === 'zh' ? '面向的行业与团队' : 'Industries and teams we focus on'}>{m.industryStrip.map((label, i) => <span><span class="mono">0{i+1}</span>{label}</span>)}</div>
+<section class="section workflow-section container">
+  <div class="section-heading split-heading"><div><p class="eyebrow">{m.solutionEyebrow}</p><h2>{m.solutionTitle[0]}<br/><span class="accent-text">{m.solutionTitle[1]}</span></h2></div><div><p class="section-description">{m.solutionIntro}</p><a class="text-link" href={href('solutions')}>{m.solutionAction}<Icon name="arrow"/></a></div></div>
+  <DigitalThread lang={lang}/>
+  <p class="positioning-line">{t.tagline}</p>
+  <div class="solution-pillars">{m.solutionPillars.map((pillar, i) => <article><span class="mono pillar-number">0{i+1}</span><p class="eyebrow">{pillar.subtitle}</p><h3>{pillar.title}</h3><p>{pillar.text}</p><div class="status-row"><StatusBadge status={pillar.status} lang={lang}/><span class="phase">{pillar.scope}</span></div></article>)}</div>
+</section>
+<section class="section industries-section">
+  <div class="container">
+    <div class="section-heading split-heading"><div><p class="eyebrow">{m.industryEyebrow}</p><h2>{m.industryTitle[0]}<br/>{m.industryTitle[1]}</h2></div><div><p class="section-description">{m.industryIntro}</p><a class="text-link" href={href('industries')}>{m.industryAction}<Icon name="arrow"/></a></div></div>
+    <div class="industry-grid">{m.industries.map(industry => <a class="industry-card" href={`${href('industries')}#${industry.id}`}><div class="industry-art-wrap"><IndustryArt kind={industry.id as 'semiconductors' | 'quantum-materials'}/><span class="industry-art-label mono">{industry.code}</span></div><div class="industry-card-copy"><p class="eyebrow">{industry.audience}</p><h3>{industry.title}<Icon name="arrow"/></h3><p>{industry.intro}</p></div></a>)}</div>
+  </div>
+</section>
+<section class="section trends-section container">
+  <div class="section-heading split-heading"><div><p class="eyebrow">{m.trendEyebrow}</p><h2 class="preserve-lines">{m.trendTitle}</h2></div><p class="section-description">{m.trendIntro}</p></div>
+  <div class="trend-grid">{m.trends.map((trend,i) => <article><div class="trend-top"><span class="mono">0{i+1}</span><StatusBadge status={trend.status} lang={lang}/></div><p class="trend-keyword">{trend.keyword}</p><h3>{trend.title}</h3><p>{trend.text}</p></article>)}</div>
+</section>
+<section class="section products-section" id="products">
+  <div class="container">
+    <div class="section-heading"><p class="eyebrow">{m.productEyebrow}</p><h2>{m.productTitle}</h2><p class="section-description">{m.productIntro}</p></div>
+    <div class="product-grid">
+      {t.products.map((product,i) => <article class="product-card">
+        <div class="card-top"><span class="product-icon"><Icon name={(['sample','instrument','agent'] as const)[i]}/></span><span class="mono">/{product.number}</span></div>
+        <p class="product-label">{product.label}</p><h3>{product.name}</h3>
+        <div class="status-row"><StatusBadge status={product.status} lang={lang}/>{product.phase && <span class="phase">{product.phase}</span>}</div>
+        <p class="product-summary">{product.summary}</p>
+        <ul class="feature-list">{product.features.filter((_,index) => i===1 || index===0 || index===product.features.length-1).map(feature => <li><span>{feature.text}</span><StatusBadge status={feature.status} lang={lang}/></li>)}</ul>
+        <a class="card-link" href={`${href('products')}#${product.id}`}>{t.details}<span class="sr-only"> — {product.name}</span><Icon name="arrow"/></a>
+      </article>)}
+    </div>
+  </div>
+</section>
+<section class="contact-banner container"><div><p class="eyebrow">{t.contactEyebrow}</p><h2>{m.contactTitle[0]}<br/>{m.contactTitle[1]}</h2><p>{t.contactText}</p></div><a class="button banner-button" href={href('contact')}>{t.contactUs}<Icon name="arrow"/></a><span class="banner-orbit" aria-hidden="true"></span></section>
