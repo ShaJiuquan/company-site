@@ -1,0 +1,278 @@
+{
+  "origin": "http://127.0.0.1:4322/company-site/",
+  "checkedAt": "2026-09-29T16:09:15.612Z",
+  "browser": "154.0.8037.58",
+  "results": [
+    {
+      "route": "/",
+      "theme": "light",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/solutions/",
+      "theme": "light",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/industries/",
+      "theme": "light",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/products/",
+      "theme": "light",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/about/",
+      "theme": "light",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/contact/",
+      "theme": "light",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/en/",
+      "theme": "light",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/en/solutions/",
+      "theme": "light",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/en/industries/",
+      "theme": "light",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/en/products/",
+      "theme": "light",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/en/about/",
+      "theme": "light",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/en/contact/",
+      "theme": "light",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/solutions/",
+      "theme": "dark",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/industries/",
+      "theme": "dark",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/products/",
+      "theme": "dark",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/about/",
+      "theme": "dark",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/contact/",
+      "theme": "dark",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/en/",
+      "theme": "dark",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/en/solutions/",
+      "theme": "dark",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/en/industries/",
+      "theme": "dark",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/en/products/",
+      "theme": "dark",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/en/about/",
+      "theme": "dark",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/en/contact/",
+      "theme": "dark",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    }
+  ],
+  "interactions": [
+    "theme toggle",
+    "theme persistence",
+    "language preserves page",
+    "navigation without JavaScript"
+  ],
+  "errors": []
+}

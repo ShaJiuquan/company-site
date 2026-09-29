@@ -1,0 +1,2264 @@
+{
+  "origin": "http://127.0.0.1:4322/company-site/",
+  "checkedAt": "2026-09-29T16:11:56.806Z",
+  "lighthouseVersion": "13.5.0",
+  "mode": "mobile / simulated throttling / default Lighthouse screen",
+  "results": [
+    {
+      "route": "/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "EEB83DF72FFC870AC6B4BB761B3C3751": {
+                      "url": "http://127.0.0.1:4322/company-site/",
+                      "navStartToEndTime": 12,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "86936.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 15,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 15
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/solutions/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "A07EF1EAE7E1A0A310CBA5537E3335B1": {
+                      "url": "http://127.0.0.1:4322/company-site/solutions/",
+                      "navStartToEndTime": 6,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "86948.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 9,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 9
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/industries/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "60320CCBAE6D52D8969311EE7C0B56DF": {
+                      "url": "http://127.0.0.1:4322/company-site/industries/",
+                      "navStartToEndTime": 7,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "86953.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 9,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 9
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/products/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "4082B98BCBD75D0EE1A6EF8930860376": {
+                      "url": "http://127.0.0.1:4322/company-site/products/",
+                      "navStartToEndTime": 6,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "86961.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/about/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "E4F8D1C49488D5B6844063DCD08AB84D": {
+                      "url": "http://127.0.0.1:4322/company-site/about/",
+                      "navStartToEndTime": 7,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "86985.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 150
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/contact/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "18A427ED424A78FF291A27FB4A3E34AF": {
+                      "url": "http://127.0.0.1:4322/company-site/contact/",
+                      "navStartToEndTime": 6,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "86989.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/en/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "2CF4E44534A2212CE0C75EFB9576779F": {
+                      "url": "http://127.0.0.1:4322/company-site/en/",
+                      "navStartToEndTime": 8,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "86999.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 10,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 10
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 150
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/en/solutions/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "90C9C26B6B6E3DEED67AD5879E0E7AFE": {
+                      "url": "http://127.0.0.1:4322/company-site/en/solutions/",
+                      "navStartToEndTime": 6,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87005.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/en/industries/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "CDF2FF23805012DD9E95B847BF25D014": {
+                      "url": "http://127.0.0.1:4322/company-site/en/industries/",
+                      "navStartToEndTime": 6,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87017.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 150
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/en/products/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "EDDFBF8A9DDED8C763BC1142398B48FC": {
+                      "url": "http://127.0.0.1:4322/company-site/en/products/",
+                      "navStartToEndTime": 6,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87025.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/en/about/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "50CB83ADF805E3C24B98E4EC3605C93F": {
+                      "url": "http://127.0.0.1:4322/company-site/en/about/",
+                      "navStartToEndTime": 6,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87031.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/en/contact/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "CCD57B086348C3B44775C4F24E56104C": {
+                      "url": "http://127.0.0.1:4322/company-site/en/contact/",
+                      "navStartToEndTime": 6,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87034.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "4E9DD09212354F0FD629CF6784950AEE": {
+                      "url": "http://127.0.0.1:4322/company-site/",
+                      "navStartToEndTime": 8,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87040.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 9,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 9
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/solutions/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "8D5A3F003B72EFE57FC9EA4E4F4BA8FB": {
+                      "url": "http://127.0.0.1:4322/company-site/solutions/",
+                      "navStartToEndTime": 6,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87047.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/industries/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "40D5E6B88291C9EA260A3F70F69C307E": {
+                      "url": "http://127.0.0.1:4322/company-site/industries/",
+                      "navStartToEndTime": 6,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87053.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/products/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "466C8A5F9D70B83A4C83CBC5D5726757": {
+                      "url": "http://127.0.0.1:4322/company-site/products/",
+                      "navStartToEndTime": 8,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87058.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 9,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 9
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/about/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "4B1D6AFBF824506CAEAB3355F89F83C9": {
+                      "url": "http://127.0.0.1:4322/company-site/about/",
+                      "navStartToEndTime": 6,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87068.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/contact/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "E25D01A46FE8C348D376D0496BA02E10": {
+                      "url": "http://127.0.0.1:4322/company-site/contact/",
+                      "navStartToEndTime": 7,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87075.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 9,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 9
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/en/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "125B7974E7EEC080C9050F288E48E1E5": {
+                      "url": "http://127.0.0.1:4322/company-site/en/",
+                      "navStartToEndTime": 8,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87081.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 10,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 10
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/en/solutions/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "9B767614C11402FC1011191A0FD832EE": {
+                      "url": "http://127.0.0.1:4322/company-site/en/solutions/",
+                      "navStartToEndTime": 8,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87146.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 10,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 10
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/en/industries/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "D5D519B5167155E02AE6C697C8B70F8C": {
+                      "url": "http://127.0.0.1:4322/company-site/en/industries/",
+                      "navStartToEndTime": 9,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87152.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 10,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 10
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/en/products/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "9D3271729A2F42441EF08378EA27BD3E": {
+                      "url": "http://127.0.0.1:4322/company-site/en/products/",
+                      "navStartToEndTime": 6,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87160.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/en/about/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "45945A566F1A565FDE93EE170CF0696F": {
+                      "url": "http://127.0.0.1:4322/company-site/en/about/",
+                      "navStartToEndTime": 6,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87164.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "route": "/en/contact/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100,
+      "failedAudits": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": {
+            "type": "list",
+            "items": [
+              {
+                "type": "list-section",
+                "value": {
+                  "type": "network-tree",
+                  "chains": {
+                    "DCB11797C265C5D7B8ED25E3B73F4905": {
+                      "url": "http://127.0.0.1:4322/company-site/en/contact/",
+                      "navStartToEndTime": 7,
+                      "transferSize": 127,
+                      "isLongest": true,
+                      "children": {
+                        "87170.2": {
+                          "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                          "navStartToEndTime": 8,
+                          "transferSize": 127,
+                          "isLongest": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  },
+                  "longestChain": {
+                    "duration": 8
+                  }
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnected origins",
+                "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+                "value": {
+                  "type": "text",
+                  "value": "no origins were preconnected"
+                }
+              },
+              {
+                "type": "list-section",
+                "title": "Preconnect candidates",
+                "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+                "value": {
+                  "type": "text",
+                  "value": "No additional origins are good candidates for preconnecting"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": {
+            "type": "table",
+            "headings": [
+              {
+                "key": "url",
+                "valueType": "url",
+                "label": "URL"
+              },
+              {
+                "key": "totalBytes",
+                "valueType": "bytes",
+                "label": "Transfer Size"
+              },
+              {
+                "key": "wastedMs",
+                "valueType": "timespanMs",
+                "label": "Duration"
+              }
+            ],
+            "items": [
+              {
+                "url": "http://127.0.0.1:4322/company-site/_astro/_..BAHGET4S.css",
+                "totalBytes": 127,
+                "wastedMs": 151
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
