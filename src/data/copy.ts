@@ -6,7 +6,7 @@ export const copy = {
   zh: {
     meta: {
       home: { title: '开特云 · 材料实验室的数字主线', description: '开特云为材料实验室打造以样品为中心的数据工作台与仪器软件：把生长、表征、输运与分析连在同一个样品编号上。本地部署，每一步可追溯。' },
-      products: { title: '产品 · 开特云', description: 'DataViewer 样品数据工作台、PPMS 测控软件，以及正在设计的 AI 接口。' },
+      products: { title: '产品 · 开特云', description: 'DataViewer 样品数据工作台、PPMS 测控软件、转岛机、仿真工具，以及正在设计的 AI 接口。' },
       about: { title: '关于 · 开特云', description: '开特云由实验物理研究者创立，致力于为材料实验室建设数字主线。' },
     },
     ui: {
@@ -77,6 +77,30 @@ export const copy = {
       more: '产品详情',
       tablist: 'DataViewer 界面',
     },
+    family: {
+      eyebrow: '全链路',
+      title: ['一套工具，', '陪样品走完一生。'],
+      lede: '生长、转移、测量、分析、仿真——每个环节都有我们自己写的软件。有的已在实验室日常运行，有的正在路上。',
+      stages: [
+        { stage: '生长', product: 'MBE · RHEED', text: '接入 MBE 与 RHEED，让生长参数随样品自动入档。', state: '下一步', icon: 'flame' },
+        { stage: '转移', product: '转岛机', text: '显微视觉定位与力控接触，完成二维材料微岛的拾取与放置。', state: '控制软件实机验收中', icon: 'sample' },
+        { stage: '测量', product: 'PPMS 测控', text: '降温、扫场、锁相与 Delta 测量，编排成可复用的测量序列。', state: '日常运行', icon: 'magnet' },
+        { stage: '分析', product: 'DataViewer', text: '按样品组织数据：处理、拟合、工作流，全程溯源。', state: '早期版本', icon: 'cube' },
+        { stage: '仿真', product: '仿真与代理模型', text: '有限元结果和测量挂在同一个样品编号下；代理模型加速参数筛选。', state: '研究中', icon: 'sigma' },
+      ],
+    },
+    hardware: {
+      eyebrow: '设备',
+      title: ['不止软件，', '我们也设计设备。'],
+      text: '转岛机：面向二维材料微岛的转移设备。显微视觉定位、多轴精密位移与力控接触，由我们自己的控制软件统一调度。',
+      callouts: [
+        { title: '显微视觉', text: '自动对焦、ChArUco 标定与视觉定位，按地图逐个找到微岛。' },
+        { title: '多轴精密位移', text: 'ACS 运动控制器驱动多轴位移台，配合纳米定位器完成细调。' },
+        { title: '力控接触', text: '力传感器闭环完成接触调平，拾取、放置、清洁一气呵成。' },
+      ],
+      caption: '三维设计渲染',
+      status: '新一代控制软件已在全 mock 环境跑通完整转移流程，实机验收尚待完成。',
+    },
     instruments: {
       eyebrow: '仪器端',
       title: ['数据在产生的那一刻，', '就该带上样品编号。'],
@@ -129,9 +153,9 @@ export const copy = {
     footer: { tagline: '材料实验室的数字主线', privacy: '本站不使用 Cookie，也不做任何追踪。', nav: '页脚导航' },
     productsPage: {
       eyebrow: '产品',
-      title: ['一个数据底座，', '一端连仪器，一端连 AI。'],
-      lede: '开特云由三部分组成：以样品为中心的数据工作台 DataViewer、仪器测控软件，以及面向 AI 助手的开放接口。',
-      jump: [{ id: 'dataviewer', label: 'DataViewer' }, { id: 'instruments', label: '仪器测控' }, { id: 'agent', label: 'AI 接口' }, { id: 'roadmap', label: '路线图' }],
+      title: ['从设备到数据，', '一条线连到底。'],
+      lede: '开特云的产品覆盖样品的一生：数据工作台 DataViewer、PPMS 测控软件、转岛机、仿真工具，以及面向 AI 助手的开放接口。',
+      jump: [{ id: 'dataviewer', label: 'DataViewer' }, { id: 'instruments', label: 'PPMS 测控' }, { id: 'transfer', label: '转岛机' }, { id: 'simulation', label: '仿真' }, { id: 'agent', label: 'AI 接口' }, { id: 'roadmap', label: '路线图' }],
       dataviewer: {
         kicker: 'DataViewer', title: '样品数据工作台',
         text: '一个本地运行的桌面应用。所有数据都挂在样品上，所有操作都留下记录。',
@@ -156,9 +180,33 @@ export const copy = {
         ],
         now: '现在：PPMS 测控日常运行。',
         next: '接下来：测量完成后自动写入 DataViewer 样品档案；之后接入 MBE 与 RHEED。',
+        shot: 'PPMS 测控 · 测量序列编辑（开发版界面，仪器为 mock）',
+      },
+      transfer: {
+        kicker: '转岛机', title: ['二维材料微岛的', '拾取与放置'],
+        text: '转岛机把显微视觉、多轴精密位移与力控接触集成在一台设备里，用来把二维材料微岛从源基底逐个拾取、对位，并放到目标位置。',
+        bullets: [
+          '设备驱动：ACS 运动控制器、Nators 纳米定位器、Piezoconcept 压电台、力传感器、工业相机',
+          '工艺流程：拾取、放置、清洁，按地图批量执行，失败可重试',
+          '视觉与标定：自动对焦、ChArUco 标定、坐标批处理与视觉定位',
+          '安全：机器互锁与操作仲裁，手动操作和自动任务受同一套约束',
+        ],
+        now: '现在：新一代控制软件（Rust + React，与 PPMS 同一套架构）已在全 mock 环境跑通完整转移流程。',
+        next: '接下来：实机验收，并把每一次转移的记录写入对应样品的档案。',
+        captionHero: '转岛机 · 三维设计渲染', captionDetail: '晶圆载台与多轴位移台 · 细节',
+      },
+      simulation: {
+        kicker: '仿真', title: ['让仿真和实验，', '住在同一个档案里'], status: '研究中',
+        text: '我们长期用有限元和代理模型研究器件里的电—热—力耦合问题。下一步，把仿真结果和对应样品的测量挂在一起：同一个编号下，模型预测和实测曲线可以直接对照。',
+        bullets: [
+          '有限元：电—热—力多物理场建模',
+          '代理模型：用高斯过程等方法加速大规模参数扫描',
+          '筛选：先用代理模型排序，再挑最值得精算的候选',
+        ],
+        caption: '示意：电流收缩处的焦耳热温度场与自适应网格',
       },
       agent: {
-        kicker: 'AI 接口', title: '给 AI 一个可以信任的实验室', status: '设计中',
+        kicker: 'AI 接口', title: ['给 AI 一个', '可以信任的实验室'], status: '设计中',
         text: '我们正在基于 MCP 设计一个开放接口，让 Claude、Codex 等 AI 助手可以访问样品库、调用确定性的分析操作。',
         principles: [
           { icon: 'book', title: '读得懂', text: '结构化的样品库，而不是一堆文件夹。' },
@@ -169,9 +217,9 @@ export const copy = {
       roadmap: {
         title: '路线图',
         columns: [
-          { label: '现在', items: ['DataViewer 早期版本：样品档案、N 维浏览、工作流、溯源', 'PPMS 测控软件日常运行'] },
-          { label: '接下来', items: ['直接读取 Nanonis、PPMS .dat 等仪器文件', 'PPMS 测量自动写入样品档案'] },
-          { label: '之后', items: ['MBE / RHEED 接入', 'MCP 接口：AI 助手在你的批准下工作'] },
+          { label: '现在', items: ['DataViewer 早期版本：样品档案、N 维浏览、工作流、溯源', 'PPMS 测控软件日常运行', '转岛机新一代控制软件：全 mock 流程已跑通'] },
+          { label: '接下来', items: ['直接读取 Nanonis、PPMS .dat 等仪器文件', 'PPMS 测量自动写入样品档案', '转岛机实机验收'] },
+          { label: '之后', items: ['MBE / RHEED 接入', '仿真结果与测量同档对照', 'MCP 接口：AI 助手在你的批准下工作'] },
         ],
       },
       shots: { samples: '样品档案', ndplot: '数据立方', workflows: '工作流', provenance: '溯源' },
@@ -200,7 +248,7 @@ export const copy = {
   en: {
     meta: {
       home: { title: '开特云 · The digital thread for materials labs', description: '开特云 builds sample-centered data and instrument software for materials labs: growth, characterization, transport and analysis linked to one sample ID. Local-first and traceable at every step.' },
-      products: { title: 'Products · 开特云', description: 'DataViewer, the sample data workbench; PPMS control software; and an AI interface in design.' },
+      products: { title: 'Products · 开特云', description: 'DataViewer, the sample data workbench; PPMS control software; the island-transfer machine; simulation tools; and an AI interface in design.' },
       about: { title: 'About · 开特云', description: '开特云 was started by experimental physicists to build the digital thread for materials labs.' },
     },
     ui: {
@@ -271,6 +319,30 @@ export const copy = {
       more: 'Product details',
       tablist: 'DataViewer screens',
     },
+    family: {
+      eyebrow: 'End to end',
+      title: ['One toolkit', "for a sample's whole life."],
+      lede: 'Growth, transfer, measurement, analysis, simulation — we write the software for every step. Some of it runs in our lab every day; the rest is on its way.',
+      stages: [
+        { stage: 'Growth', product: 'MBE · RHEED', text: 'Bringing MBE and RHEED online so growth parameters file themselves with the sample.', state: 'Next', icon: 'flame' },
+        { stage: 'Transfer', product: 'Island-transfer machine', text: 'Vision-guided, force-controlled pick-and-place of 2D-material micro-islands.', state: 'Control software in validation', icon: 'sample' },
+        { stage: 'Measurement', product: 'PPMS control', text: 'Cooldowns, field sweeps, lock-in and delta measurements as reusable sequences.', state: 'In daily use', icon: 'magnet' },
+        { stage: 'Analysis', product: 'DataViewer', text: 'Data organized by sample: processing, fitting, workflows — all traceable.', state: 'Early version', icon: 'cube' },
+        { stage: 'Simulation', product: 'Simulation & surrogates', text: 'FEM results filed next to measurements under the same sample ID; surrogate models speed up screening.', state: 'In research', icon: 'sigma' },
+      ],
+    },
+    hardware: {
+      eyebrow: 'Hardware',
+      title: ['Not just software —', 'we design the machines too.'],
+      text: 'The island-transfer machine: a pick-and-place system for 2D-material micro-islands. Microscope vision, multi-axis precision stages and force-controlled contact, all orchestrated by our own control software.',
+      callouts: [
+        { title: 'Microscope vision', text: 'Autofocus, ChArUco calibration and visual alignment find each island on the map.' },
+        { title: 'Multi-axis motion', text: 'An ACS motion controller drives the stage stack; nanopositioners handle the fine moves.' },
+        { title: 'Force-controlled contact', text: 'Closed-loop force sensing levels the contact; pick, place and clean in one flow.' },
+      ],
+      caption: '3D design render',
+      status: 'The next-generation control software runs the full transfer flow end to end in simulation; validation on the real machine is still pending.',
+    },
     instruments: {
       eyebrow: 'At the instrument',
       title: ['Data should carry its sample ID', "from the moment it's measured."],
@@ -323,9 +395,9 @@ export const copy = {
     footer: { tagline: 'The digital thread for materials labs', privacy: 'This site uses no cookies and no tracking.', nav: 'Footer navigation' },
     productsPage: {
       eyebrow: 'Products',
-      title: ['One data foundation —', 'instruments on one side, AI on the other.'],
-      lede: '开特云 has three parts: DataViewer, a sample-centered data workbench; instrument control software; and an open interface for AI assistants.',
-      jump: [{ id: 'dataviewer', label: 'DataViewer' }, { id: 'instruments', label: 'Instruments' }, { id: 'agent', label: 'AI interface' }, { id: 'roadmap', label: 'Roadmap' }],
+      title: ['From machines to data,', 'one continuous thread.'],
+      lede: "开特云's products cover a sample's whole life: the DataViewer workbench, PPMS control software, the island-transfer machine, simulation tools, and an open interface for AI assistants.",
+      jump: [{ id: 'dataviewer', label: 'DataViewer' }, { id: 'instruments', label: 'PPMS control' }, { id: 'transfer', label: 'Island transfer' }, { id: 'simulation', label: 'Simulation' }, { id: 'agent', label: 'AI interface' }, { id: 'roadmap', label: 'Roadmap' }],
       dataviewer: {
         kicker: 'DataViewer', title: 'The sample data workbench',
         text: 'A desktop app that runs locally. Every dataset hangs off a sample; every operation leaves a record.',
@@ -350,9 +422,33 @@ export const copy = {
         ],
         now: 'Now: PPMS control in daily use.',
         next: 'Next: measurements filed into DataViewer sample records automatically — then MBE and RHEED.',
+        shot: 'PPMS control · sequence editor (development build, mock instruments)',
+      },
+      transfer: {
+        kicker: 'Island-transfer machine', title: ['Pick and place for', '2D-material micro-islands'],
+        text: 'The island-transfer machine combines microscope vision, multi-axis precision motion and force-controlled contact to pick micro-islands of 2D materials from a source substrate, align them, and place them one by one.',
+        bullets: [
+          'Drivers: ACS motion controller, Nators nanopositioners, Piezoconcept piezo stage, force sensor, industrial camera',
+          'Process: take, drop and clean, run in batches from a map, with retries on failure',
+          'Vision and calibration: autofocus, ChArUco calibration, coordinate batches and visual alignment',
+          'Safety: machine interlocks and operation arbitration shared by manual and automatic runs',
+        ],
+        now: 'Now: the next-generation control software (Rust + React, the same architecture as PPMS) runs the full transfer flow end to end in simulation.',
+        next: 'Next: validation on the real machine, and every transfer filed to the matching sample record.',
+        captionHero: 'Island-transfer machine · 3D design render', captionDetail: 'Wafer stage and multi-axis stages · detail',
+      },
+      simulation: {
+        kicker: 'Simulation', title: ['Simulation and experiment,', 'in the same record'], status: 'In research',
+        text: "We've long used finite-element and surrogate models to study coupled electro-thermal-mechanical behavior in devices. Next, simulation results will be filed with the matching sample's measurements, so model predictions and measured curves sit side by side under one ID.",
+        bullets: [
+          'FEM: coupled electro-thermal-mechanical models',
+          'Surrogates: Gaussian-process and related models for fast parameter sweeps',
+          'Screening: rank candidates with a surrogate, then solve the ones that matter',
+        ],
+        caption: 'Illustration: Joule-heating temperature field at a current constriction, with an adaptive mesh',
       },
       agent: {
-        kicker: 'AI interface', title: 'Give AI a lab it can be trusted with', status: 'In design',
+        kicker: 'AI interface', title: ['Give AI a lab', 'it can be trusted with'], status: 'In design',
         text: "We're designing an open MCP interface through which assistants such as Claude and Codex can read the sample library and call deterministic analysis operations.",
         principles: [
           { icon: 'book', title: 'It can read', text: 'A structured sample library, not a pile of folders.' },
@@ -363,9 +459,9 @@ export const copy = {
       roadmap: {
         title: 'Roadmap',
         columns: [
-          { label: 'Now', items: ['DataViewer early version: sample records, N-D browser, workflows, provenance', 'PPMS control software in daily use'] },
-          { label: 'Next', items: ['Direct reading of instrument files such as Nanonis and PPMS .dat', 'PPMS measurements filed to sample records automatically'] },
-          { label: 'Later', items: ['MBE / RHEED integration', 'MCP interface: AI assistants working with your approval'] },
+          { label: 'Now', items: ['DataViewer early version: sample records, N-D browser, workflows, provenance', 'PPMS control software in daily use', 'Island-transfer control software: full flow running in simulation'] },
+          { label: 'Next', items: ['Direct reading of instrument files such as Nanonis and PPMS .dat', 'PPMS measurements filed to sample records automatically', 'Island-transfer validation on the real machine'] },
+          { label: 'Later', items: ['MBE / RHEED integration', 'Simulation results filed next to measurements', 'MCP interface: AI assistants working with your approval'] },
         ],
       },
       shots: { samples: 'Sample records', ndplot: 'Data cubes', workflows: 'Workflows', provenance: 'Provenance' },

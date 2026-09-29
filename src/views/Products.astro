@@ -2,11 +2,15 @@
 import { Image } from 'astro:assets';
 import Cta from '../components/Cta.astro';
 import Icon from '../components/Icon.astro';
-import SequenceCard from '../components/SequenceCard.astro';
+import AppShot from '../components/AppShot.astro';
 import samples from '../assets/product/dv-samples.webp';
 import ndplot from '../assets/product/dv-ndplot.webp';
 import workflows from '../assets/product/dv-workflows.webp';
 import provenance from '../assets/product/dv-provenance.webp';
+import ppms from '../assets/product/ppms-sequence.webp';
+import transferHero from '../assets/hardware/transfer-hero.webp';
+import transferDetail from '../assets/hardware/transfer-detail.webp';
+import fem from '../assets/science/fem.webp';
 import { copy } from '../data/copy';
 import type { Language } from '../data/site';
 
@@ -80,7 +84,50 @@ const small = [
       <ul class="bullets">{t.instruments.bullets.map((b) => <li><Icon name="check" size={18} /><span>{b}</span></li>)}</ul>
       <div class="now-next"><p>{t.instruments.now}</p><p>{t.instruments.next}</p></div>
     </div>
-    <div class="reveal" style="--delay:0.1s"><SequenceCard lang={lang} /></div>
+    <figure class="reveal" style="--delay:0.1s">
+      <AppShot src={ppms} title="PPMS — Sequence · KT-0912-A2" alt={t.instruments.shot} sizes="(max-width: 900px) 92vw, 560px" />
+      <figcaption class="concept shot-caption">{t.instruments.shot}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section stage hardware" id="transfer" aria-labelledby="transfer-title">
+  <div class="container product-block">
+    <div class="product-intro reveal">
+      <div><span class="kicker">{t.transfer.kicker}</span><h2 class="h2" id="transfer-title"><span>{t.transfer.title[0]}</span><span>{t.transfer.title[1]}</span></h2></div>
+      <p class="lede">{t.transfer.text}</p>
+    </div>
+    <div class="render-pair">
+      <figure class="render reveal">
+        <Image src={transferHero} alt={t.transfer.captionHero} widths={[800, 1200, 1800, 2400]} sizes="(max-width: 900px) 92vw, 700px" />
+        <figcaption class="concept">{t.transfer.captionHero}</figcaption>
+      </figure>
+      <figure class="render render--detail reveal" style="--delay:0.08s">
+        <Image src={transferDetail} alt={t.transfer.captionDetail} widths={[600, 900, 1200, 1800]} sizes="(max-width: 900px) 92vw, 460px" />
+        <figcaption class="concept">{t.transfer.captionDetail}</figcaption>
+      </figure>
+    </div>
+    <ul class="bullets bullets--stage">{t.transfer.bullets.map((b) => <li><Icon name="check" size={18} /><span>{b}</span></li>)}</ul>
+    <div class="now-next now-next--stage"><p>{t.transfer.now}</p><p>{t.transfer.next}</p></div>
+  </div>
+</section>
+
+<section class="section" id="simulation" aria-labelledby="sim-title">
+  <div class="container split">
+    <div class="split-copy reveal">
+      <span class="eyebrow">{t.simulation.kicker}</span>
+      <h2 class="h2" id="sim-title"><span>{t.simulation.title[0]}</span><span>{t.simulation.title[1]}</span></h2>
+      <span class="status-chip status-chip--paper">{t.simulation.status}</span>
+      <p class="lede">{t.simulation.text}</p>
+      <ul class="bullets">{t.simulation.bullets.map((b) => <li><Icon name="check" size={18} /><span>{b}</span></li>)}</ul>
+    </div>
+    <figure class="fem reveal" style="--delay:0.1s">
+      <div class="fem-frame">
+        <Image src={fem} alt={t.simulation.caption} widths={[600, 960]} sizes="(max-width: 900px) 92vw, 560px" />
+        <div class="colorbar" aria-hidden="true"><span>ΔT</span><i /><span>max</span></div>
+      </div>
+      <figcaption class="concept shot-caption">{t.simulation.caption}</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -89,7 +136,7 @@ const small = [
     <div class="product-intro reveal">
       <div>
         <span class="kicker">{t.agent.kicker}</span>
-        <h2 class="h2" id="agent-title">{t.agent.title}</h2>
+        <h2 class="h2" id="agent-title"><span>{t.agent.title[0]}</span><span>{t.agent.title[1]}</span></h2>
       </div>
       <div style="display:grid;gap:16px">
         <span class="status-chip">{t.agent.status}</span>

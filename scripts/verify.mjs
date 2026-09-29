@@ -8,8 +8,8 @@ const browser = await chromium.launch({ executablePath: chromePath, headless: tr
 const routes = ['', 'products/', 'about/', 'en/', 'en/products/', 'en/about/'];
 // Honesty guards: illustrative / development visuals must stay labeled as such.
 const labels = {
-  zh: { record: '示意数据', build: '开发版界面', concept: '概念示意' },
-  en: { record: 'Illustrative data', build: 'Development build', concept: 'Concept' },
+  zh: { record: '示意数据', build: '开发版界面', concept: '概念示意', render: '三维设计渲染' },
+  en: { record: 'Illustrative data', build: 'Development build', concept: 'Concept', render: '3D design render' },
 };
 const results = [];
 
@@ -73,8 +73,9 @@ try {
         await page.setViewportSize({ width: 390, height: 844 });
       }
       if (route.endsWith('products/')) {
-        for (const id of ['dataviewer', 'instruments', 'agent', 'roadmap']) assert.equal(await page.locator(`#${id}`).count(), 1, `#${id} on ${url}`);
-        assert.ok((await page.locator('main').innerText()).includes(labels[lang].build));
+        for (const id of ['dataviewer', 'instruments', 'transfer', 'simulation', 'agent', 'roadmap']) assert.equal(await page.locator(`#${id}`).count(), 1, `#${id} on ${url}`);
+        const productText = await page.locator('main').innerText();
+        for (const label of [labels[lang].build, labels[lang].render, lang === 'zh' ? '示意：' : 'Illustration:']) assert.ok(productText.includes(label), `missing "${label}" on ${url}`);
       }
       const links = await page.locator('a[href]').evaluateAll((nodes) => nodes.map((node) => node.href));
       for (const link of new Set(links.filter((l) => l.startsWith(new URL(origin).origin)))) {

@@ -1,0 +1,33 @@
+---
+import Icon from './Icon.astro';
+import { copy } from '../data/copy';
+import type { Language } from '../data/site';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = copy[lang].family;
+// Matches the order of t.stages: growth, transfer, measurement, analysis, simulation.
+const states = ['next', 'progress', 'now', 'now', 'research'] as const;
+---
+<section class="section" aria-labelledby="family-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">{t.eyebrow}</span>
+      <h2 class="h2" id="family-title"><span>{t.title[0]}</span><span>{t.title[1]}</span></h2>
+      <p class="lede">{t.lede}</p>
+    </div>
+    <ol class="lifecycle">
+      {t.stages.map((s, i) => (
+        <li class="life-step reveal" style={`--delay:${i * 0.07}s`}>
+          <div class="life-head">
+            <span class="life-icon"><Icon name={s.icon} size={20} /></span>
+            <span class="life-stage mono">0{i + 1} · {s.stage}</span>
+          </div>
+          <h3 class="h3">{s.product}</h3>
+          <p>{s.text}</p>
+          <span class="life-state" data-state={states[i]}>{s.state}</span>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

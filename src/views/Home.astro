@@ -1,9 +1,12 @@
 ---
 import Cta from '../components/Cta.astro';
 import Icon from '../components/Icon.astro';
+import AppShot from '../components/AppShot.astro';
+import Hardware from '../components/Hardware.astro';
+import Lifecycle from '../components/Lifecycle.astro';
 import SampleRecord from '../components/SampleRecord.astro';
-import SequenceCard from '../components/SequenceCard.astro';
 import Showcase from '../components/Showcase.astro';
+import ppms from '../assets/product/ppms-sequence.webp';
 import { copy } from '../data/copy';
 import { href, mailto, type Language } from '../data/site';
 
@@ -83,6 +86,8 @@ const scatter = [
   </div>
 </section>
 
+<Lifecycle lang={lang} />
+
 <section class="section stage showcase" aria-labelledby="product-title">
   <div class="container">
     <div class="section-head section-head--center reveal">
@@ -109,7 +114,30 @@ const scatter = [
       <p class="lede">{t.instruments.text}</p>
       <div class="tags">{t.instruments.tags.map((tag) => <span class="tag" data-state={tag.state}>{tag.label}</span>)}</div>
     </div>
-    <div class="reveal" style="--delay:0.1s"><SequenceCard lang={lang} /></div>
+    <figure class="reveal" style="--delay:0.1s">
+      <AppShot src={ppms} title="PPMS — Sequence · KT-0912-A2" alt={t.productsPage.instruments.shot} sizes="(max-width: 900px) 92vw, 560px" />
+      <figcaption class="concept shot-caption">{t.productsPage.instruments.shot}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<Hardware lang={lang} />
+
+<section class="section" aria-labelledby="audience-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">{t.audience.eyebrow}</span>
+      <h2 class="h2" id="audience-title">{t.audience.title}</h2>
+    </div>
+    <div class="cards-3">
+      {t.audience.items.map((item, i) => (
+        <article class="card reveal" style={`--delay:${i * 0.08}s`}>
+          <span class="icon-wrap"><Icon name={item.icon} size={22} /></span>
+          <h3 class="h3">{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
   </div>
 </section>
 
@@ -135,24 +163,6 @@ const scatter = [
         </div>
       </div>
       <p class="concept" style="margin-top: 12px">{t.ai.caption}</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="audience-title">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">{t.audience.eyebrow}</span>
-      <h2 class="h2" id="audience-title">{t.audience.title}</h2>
-    </div>
-    <div class="cards-3">
-      {t.audience.items.map((item, i) => (
-        <article class="card reveal" style={`--delay:${i * 0.08}s`}>
-          <span class="icon-wrap"><Icon name={item.icon} size={22} /></span>
-          <h3 class="h3">{item.title}</h3>
-          <p>{item.text}</p>
-        </article>
-      ))}
     </div>
   </div>
 </section>

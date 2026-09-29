@@ -1,0 +1,12 @@
+---
+// A product screenshot in a desktop-window frame.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props { src: ImageMetadata; title: string; alt: string; sizes?: string; eager?: boolean; }
+const { src, title, alt, sizes = '(max-width: 1240px) 92vw, 1120px', eager = false } = Astro.props;
+---
+<div class="frame">
+  <div class="frame-bar"><i /><i /><i /><span class="frame-title">{title}</span></div>
+  <Image src={src} alt={alt} widths={[800, 1200, 1600, 2400]} sizes={sizes} loading={eager ? 'eager' : 'lazy'} />
+</div>

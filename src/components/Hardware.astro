@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import render from '../assets/hardware/transfer-hero.webp';
+import { copy } from '../data/copy';
+import { href, type Language } from '../data/site';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = copy[lang].hardware;
+const more = copy[lang].product.more;
+---
+<section class="section stage hardware" aria-labelledby="hardware-title">
+  <div class="container hardware-grid">
+    <div class="split-copy reveal">
+      <span class="eyebrow">{t.eyebrow}</span>
+      <h2 class="h2" id="hardware-title"><span>{t.title[0]}</span><span>{t.title[1]}</span></h2>
+      <p class="lede">{t.text}</p>
+      <ul class="callouts">
+        {t.callouts.map((c) => (
+          <li><Icon name="check" size={18} /><span><strong>{c.title}</strong>{c.text}</span></li>
+        ))}
+      </ul>
+      <p class="hardware-status">{t.status}</p>
+      <a class="link-arrow" href={href(lang, 'products', '#transfer')}>{more}<Icon name="arrow" size={16} /></a>
+    </div>
+    <figure class="render reveal" style="--delay:0.1s">
+      <Image src={render} alt={t.caption} widths={[800, 1200, 1800, 2400]} sizes="(max-width: 1040px) 92vw, 640px" />
+      <figcaption class="concept">{t.caption}</figcaption>
+    </figure>
+  </div>
+</section>

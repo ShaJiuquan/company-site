@@ -1,6 +1,7 @@
-// Generates the illustrative science images used on the home page:
-// a RHEED streak pattern (phosphor screen) and an STM topograph of a
-// quintuple-layer film (terraces + C3 triangular defects).
+// Generates the illustrative science images used on the site:
+// a RHEED streak pattern (phosphor screen), an STM topograph of a
+// quintuple-layer film (terraces + C3 triangular defects), and a finite-
+// element style temperature map of Joule heating at a current constriction.
 // Deterministic (seeded) — rerun with: node scripts/gen-science.mjs
 import sharp from 'sharp';
 import { mkdir } from 'node:fs/promises';
@@ -124,4 +125,116 @@ async function writeRgb(name, width, height, pixel, blur = 0) {
     const t = clamp(0.1 + 0.82 * v + shade * 0.5);
     return [Math.min(1, t * 1.85), Math.max(0, t * 1.85 - 0.6), Math.max(0, t * 2.2 - 1.3)];
   }, 0.4);
+}
+
+// ------------------------------------------------------------------ FEM
+// Joule heating at a constriction: solve Laplace(phi) in the conductor
+// (insulated edges, fixed potential at both pads), take q = |grad phi|^2,
+// then solve Poisson(T) = -q over the substrate with T = 0 at the border.
+{
+  const NX = 200, NY = 122, W = 960, H = 586;
+  const halfWidth = (u) => 0.14 - 0.085 * Math.exp(-(((u - 0.5) / 0.07) ** 2));
+  const inConductor = (u, v) => {
+    if (u >= 0.06 && u <= 0.27 && v >= 0.16 && v <= 0.84) return true;
+    if (u >= 0.73 && u <= 0.94 && v >= 0.16 && v <= 0.84) return true;
+    return u > 0.27 && u < 0.73 && Math.abs(v - 0.5) <= halfWidth(u);
+  };
+  const idx = (i, j) => j * NX + i;
+  const mask = new Uint8Array(NX * NY);
+  for (let j = 0; j < NY; j++) for (let i = 0; i < NX; i++) mask[idx(i, j)] = inConductor(i / (NX - 1), j / (NY - 1)) ? 1 : 0;
+  const phi = new Float64Array(NX * NY).fill(0.5);
+  const fixed = (i) => (i / (NX - 1) <= 0.075 ? 1 : i / (NX - 1) >= 0.925 ? 0 : null);
+  for (let it = 0; it < 6000; it++) {
+    for (let j = 1; j < NY - 1; j++) for (let i = 1; i < NX - 1; i++) {
+      const k = idx(i, j);
+      if (!mask[k]) continue;
+      const f = fixed(i);
+      if (f !== null) { phi[k] = f; continue; }
+      let sum = 0, n = 0;
+      for (const kk of [k - 1, k + 1, k - NX, k + NX]) if (mask[kk]) { sum += phi[kk]; n++; }
+      if (n) phi[k] += 1.9 * (sum / n - phi[k]);
+    }
+  }
+  const q = new Float64Array(NX * NY);
+  for (let j = 1; j < NY - 1; j++) for (let i = 1; i < NX - 1; i++) {
+    const k = idx(i, j);
+    if (!mask[k]) continue;
+    const gx = mask[k + 1] && mask[k - 1] ? (phi[k + 1] - phi[k - 1]) / 2 : 0;
+    const gy = mask[k + NX] && mask[k - NX] ? (phi[k + NX] - phi[k - NX]) / 2 : 0;
+    q[k] = gx * gx + gy * gy;
+  }
+  const T = new Float64Array(NX * NY);
+  for (let it = 0; it < 6000; it++) {
+    for (let j = 1; j < NY - 1; j++) for (let i = 1; i < NX - 1; i++) {
+      const k = idx(i, j);
+      // Conductor conducts heat 4x better than the substrate.
+      const kc = mask[k] ? 4 : 1;
+      const avg = (T[k - 1] + T[k + 1] + T[k - NX] + T[k + NX]) / 4;
+      T[k] += 1.85 * (avg + (q[k] * 900) / (4 * kc) - T[k]);
+    }
+  }
+  let tMax = 0;
+  for (const t of T) tMax = Math.max(tMax, t);
+  const sample = (arr, x, y) => {
+    const gx = (x / (W - 1)) * (NX - 1), gy = (y / (H - 1)) * (NY - 1);
+    const i = Math.min(NX - 2, Math.floor(gx)), j = Math.min(NY - 2, Math.floor(gy));
+    const fx = gx - i, fy = gy - j;
+    const a = arr[idx(i, j)] * (1 - fx) + arr[idx(i + 1, j)] * fx;
+    const b = arr[idx(i, j + 1)] * (1 - fx) + arr[idx(i + 1, j + 1)] * fx;
+    return a * (1 - fy) + b * fy;
+  };
+  const stops = [[0, [0, 0, 4]], [0.2, [40, 11, 84]], [0.42, [120, 28, 109]], [0.62, [196, 59, 78]], [0.8, [243, 120, 25]], [0.92, [250, 193, 39]], [1, [252, 255, 164]]];
+  const inferno = (t) => {
+    for (let s = 1; s < stops.length; s++) {
+      if (t <= stops[s][0]) {
+        const [t0, c0] = stops[s - 1], [t1, c1] = stops[s];
+        const f = (t - t0) / (t1 - t0);
+        return c0.map((c, n) => (c + (c1[n] - c) * f) / 255);
+      }
+    }
+    return stops[stops.length - 1][1].map((c) => c / 255);
+  };
+  const rgb = new Float32Array(W * H * 3);
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const c = inferno(Math.pow(Math.max(0, sample(T, x, y)) / tMax, 0.8));
+    const o = (y * W + x) * 3;
+    rgb[o] = c[0]; rgb[o + 1] = c[1]; rgb[o + 2] = c[2];
+  }
+  // Quadtree mesh, refined near the constriction and along conductor edges.
+  const blend = (x, y, a) => {
+    if (x < 0 || y < 0 || x >= W || y >= H) return;
+    const o = (y * W + x) * 3;
+    for (let n = 0; n < 3; n++) rgb[o + n] = rgb[o + n] * (1 - a) + a;
+  };
+  const line = (x0, y0, x1, y1, a) => {
+    const steps = Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0));
+    for (let s = 0; s <= steps; s++) blend(Math.round(x0 + ((x1 - x0) * s) / steps), Math.round(y0 + ((y1 - y0) * s) / steps), a);
+  };
+  const leaves = [];
+  const refine = (u0, v0, du, dv, depth) => {
+    const uc = u0 + du / 2, vc = v0 + dv / 2;
+    const d2 = (uc - 0.5) ** 2 + ((vc - 0.5) * 0.61) ** 2;
+    const corners = [inConductor(u0, v0), inConductor(u0 + du, v0), inConductor(u0, v0 + dv), inConductor(u0 + du, v0 + dv)];
+    const edge = corners.some((c) => c !== corners[0]);
+    const target = 0.012 + 0.11 * (1 - Math.exp(-d2 / 0.012));
+    if (depth < 6 && (du > target || (edge && du > 0.02))) {
+      for (const [a, b] of [[0, 0], [1, 0], [0, 1], [1, 1]]) refine(u0 + a * du / 2, v0 + b * dv / 2, du / 2, dv / 2, depth + 1);
+    } else leaves.push([u0, v0, du, dv]);
+  };
+  for (let a = 0; a < 8; a++) for (let b = 0; b < 5; b++) refine(a / 8, b / 5, 1 / 8, 1 / 5, 0);
+  for (const [u0, v0, du, dv] of leaves) {
+    const x0 = Math.round(u0 * (W - 1)), y0 = Math.round(v0 * (H - 1));
+    const x1 = Math.round((u0 + du) * (W - 1)), y1 = Math.round((v0 + dv) * (H - 1));
+    line(x0, y0, x1, y0, 0.13); line(x0, y0, x0, y1, 0.13); line(x0, y1, x1, y0, 0.09);
+  }
+  // Conductor outline.
+  for (let y = 1; y < H - 1; y++) for (let x = 1; x < W - 1; x++) {
+    const u = x / (W - 1), v = y / (H - 1), du = 1 / (W - 1), dv = 1 / (H - 1);
+    const c = inConductor(u, v);
+    if (c !== inConductor(u + du, v) || c !== inConductor(u, v + dv)) blend(x, y, 0.55);
+  }
+  await writeRgb('fem', W, H, (x, y) => {
+    const o = (y * W + x) * 3;
+    return [rgb[o], rgb[o + 1], rgb[o + 2]];
+  }, 0.3);
 }
