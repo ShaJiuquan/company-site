@@ -24,6 +24,15 @@
 
 机器验收记录：[verification.json](verification.json)、[lighthouse-summary.json](lighthouse-summary.json)。完整 Lighthouse JSON/HTML 保留在本地 `artifacts/`，不提交到仓库。
 
+## GitHub Pages 线上验收
+
+- 中文：[https://shajiuquan.github.io/company-site/](https://shajiuquan.github.io/company-site/)
+- 英文：[https://shajiuquan.github.io/company-site/en/](https://shajiuquan.github.io/company-site/en/)
+- [部署任务成功](https://github.com/ShaJiuquan/company-site/actions/runs/36596477789)，对应网站源代码提交 `53f8d0a6e4e924c2b7272edb49ad0e4fd075e081`。
+- 12 个公开页面、1 份 CSS 和 favicon 共 14 个文件全部与本地构建产物逐字节相同；子页面直接访问正常。[线上文件核对](deployment-verification.json)
+- 线上中英文首页 × 亮/暗主题共 4 组默认手机 Lighthouse：性能均 100、可访问性均 100。[线上分数](online-lighthouse-summary.json)
+- 后续的验收文档提交不改变网站内容，因此不重复触发发布。
+
 ## 手机截图（390 × 844 视口，全页）
 
 - [中文 · 亮色](zh-light-mobile.png)

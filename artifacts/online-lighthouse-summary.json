@@ -1,0 +1,31 @@
+{
+  "origin": "https://shajiuquan.github.io/company-site/",
+  "checkedAt": "2026-09-29T16:18:59.387Z",
+  "mode": "mobile / simulated throttling / public GitHub Pages URL",
+  "results": [
+    {
+      "url": "https://shajiuquan.github.io/company-site/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100
+    },
+    {
+      "url": "https://shajiuquan.github.io/company-site/en/",
+      "theme": "light",
+      "performance": 100,
+      "accessibility": 100
+    },
+    {
+      "url": "https://shajiuquan.github.io/company-site/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100
+    },
+    {
+      "url": "https://shajiuquan.github.io/company-site/en/",
+      "theme": "dark",
+      "performance": 100,
+      "accessibility": 100
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "origin": "https://shajiuquan.github.io/company-site/",
+  "checkedAt": "2026-09-29T16:17:23.164434+00:00",
+  "sourceCommit": "53f8d0a6e4e924c2b7272edb49ad0e4fd075e081",
+  "results": [
+    {
+      "path": "index.html",
+      "url": "https://shajiuquan.github.io/company-site/",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "30e5150b08c6b55455ff5f67e5893f2ae6184b2164fbec140e3d9119870fc1e0",
+      "error": null
+    },
+    {
+      "path": "favicon.svg",
+      "url": "https://shajiuquan.github.io/company-site/favicon.svg",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "b18544f320691d6686368418dafbd1b6fa3078148f4166ed9d638733ba279309",
+      "error": null
+    },
+    {
+      "path": "contact/index.html",
+      "url": "https://shajiuquan.github.io/company-site/contact/",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "a97a4407c09014640a0231a32595a75a6b2aa239fef8427af5d4387caca05578",
+      "error": null
+    },
+    {
+      "path": "products/index.html",
+      "url": "https://shajiuquan.github.io/company-site/products/",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "3a03a48d9fe833ae21c89f527ea7311b5a583188da5add1b6f66b7169f222415",
+      "error": null
+    },
+    {
+      "path": "industries/index.html",
+      "url": "https://shajiuquan.github.io/company-site/industries/",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "377bc13a788a80eb3a98225259d6d8ca1d9a10d55fe98bfbcf24e026e2190bee",
+      "error": null
+    },
+    {
+      "path": "solutions/index.html",
+      "url": "https://shajiuquan.github.io/company-site/solutions/",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "1abe57a22469705b62d6f602953f6a5da9f851904c9859c78ce18bbc8c5d1527",
+      "error": null
+    },
+    {
+      "path": "about/index.html",
+      "url": "https://shajiuquan.github.io/company-site/about/",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "bbd859aee0977f8e3aacb33dde8e7cca912c05d196c4670dbeb87367bea25657",
+      "error": null
+    },
+    {
+      "path": "_astro/_..BAHGET4S.css",
+      "url": "https://shajiuquan.github.io/company-site/_astro/_..BAHGET4S.css",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "7ea92462e064078f54777b847b83706c828c1cf8f9e30fc06c6e45d608c2b2a8",
+      "error": null
+    },
+    {
+      "path": "en/index.html",
+      "url": "https://shajiuquan.github.io/company-site/en/",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "0b407ea1c0d1d6f9dc6b3ed9502e969652f09f115457956ff262ba58490ca9ba",
+      "error": null
+    },
+    {
+      "path": "en/contact/index.html",
+      "url": "https://shajiuquan.github.io/company-site/en/contact/",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "bcbaab6bb512ec4961329f472084208b74fdec27d73f02d61ccd2339dd083f00",
+      "error": null
+    },
+    {
+      "path": "en/products/index.html",
+      "url": "https://shajiuquan.github.io/company-site/en/products/",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "433289adaf9ddf9c868636885c7aa3b6ebeef3ceb693648b7166937b66b80fa5",
+      "error": null
+    },
+    {
+      "path": "en/industries/index.html",
+      "url": "https://shajiuquan.github.io/company-site/en/industries/",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "81929267ee08ef9a47f81535d38e4a9ff0dbad6699ce6501af17f3129e0a315f",
+      "error": null
+    },
+    {
+      "path": "en/solutions/index.html",
+      "url": "https://shajiuquan.github.io/company-site/en/solutions/",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "b924187685aaad05425d47a6c914e7239d38bc7f51d64d027429a78e6f08c9d3",
+      "error": null
+    },
+    {
+      "path": "en/about/index.html",
+      "url": "https://shajiuquan.github.io/company-site/en/about/",
+      "success": true,
+      "identical_to_local_build": true,
+      "sha256": "4c93c46e07d0ade1c082e3e3633fa091145484436e61114a478b05050f3f15d5",
+      "error": null
+    }
+  ]
+}
