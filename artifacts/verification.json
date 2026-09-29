@@ -1,6 +1,6 @@
 {
-  "origin": "http://127.0.0.1:4322/company-site/",
-  "checkedAt": "2026-09-29T16:09:15.612Z",
+  "origin": "http://127.0.0.1:4323/company-site/",
+  "checkedAt": "2026-09-29T19:11:20.546Z",
   "browser": "154.0.8037.58",
   "results": [
     {
@@ -15,28 +15,6 @@
       "passed": true
     },
     {
-      "route": "/solutions/",
-      "theme": "light",
-      "widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "passed": true
-    },
-    {
-      "route": "/industries/",
-      "theme": "light",
-      "widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "passed": true
-    },
-    {
       "route": "/products/",
       "theme": "light",
       "widths": [
@@ -59,40 +37,7 @@
       "passed": true
     },
     {
-      "route": "/contact/",
-      "theme": "light",
-      "widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "passed": true
-    },
-    {
       "route": "/en/",
-      "theme": "light",
-      "widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "passed": true
-    },
-    {
-      "route": "/en/solutions/",
-      "theme": "light",
-      "widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "passed": true
-    },
-    {
-      "route": "/en/industries/",
       "theme": "light",
       "widths": [
         320,
@@ -115,17 +60,6 @@
     },
     {
       "route": "/en/about/",
-      "theme": "light",
-      "widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "passed": true
-    },
-    {
-      "route": "/en/contact/",
       "theme": "light",
       "widths": [
         320,
@@ -147,28 +81,6 @@
       "passed": true
     },
     {
-      "route": "/solutions/",
-      "theme": "dark",
-      "widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "passed": true
-    },
-    {
-      "route": "/industries/",
-      "theme": "dark",
-      "widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "passed": true
-    },
-    {
       "route": "/products/",
       "theme": "dark",
       "widths": [
@@ -191,40 +103,7 @@
       "passed": true
     },
     {
-      "route": "/contact/",
-      "theme": "dark",
-      "widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "passed": true
-    },
-    {
       "route": "/en/",
-      "theme": "dark",
-      "widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "passed": true
-    },
-    {
-      "route": "/en/solutions/",
-      "theme": "dark",
-      "widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "passed": true
-    },
-    {
-      "route": "/en/industries/",
       "theme": "dark",
       "widths": [
         320,
@@ -255,23 +134,13 @@
         1440
       ],
       "passed": true
-    },
-    {
-      "route": "/en/contact/",
-      "theme": "dark",
-      "widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "passed": true
     }
   ],
   "interactions": [
-    "theme toggle",
-    "theme persistence",
-    "language preserves page",
+    "tabs",
+    "theme toggle + persistence",
+    "language switch keeps page and theme",
+    "mobile menu",
     "navigation without JavaScript"
   ],
   "errors": []

@@ -1,62 +1,36 @@
-# 开特云官网验收
+# 验收记录 · v3 重设计（2026-09-30）
 
-验收日期：2026-09-30。独立目录：`/Users/jiuquansha/dev/company-site`，独立仓库：`ShaJiuquan/company-site`。公司名由用户确认。当前设计按用户补充要求，以宣传、整体解决方案、行业与趋势为主，产品细节放在独立页面。
+本地预览 `http://127.0.0.1:4323/company-site/`，分支 `redesign/v3`，尚未部署到线上。
 
-## 本地验收结果
+## 自动化验收（`npm run verify`）
 
-| 要求 | 当前证据 |
-| --- | --- |
-| Astro + 原生 CSS / 纯静态 | `astro.config.mjs` 的 `output: static`；12 个静态页面输出到 `dist/` |
-| 独立工程 | 本目录单独初始化 Git；未编辑 dataviewer、simviewer、PPMS |
-| 安装、构建零错误 | Node.js 24.19.0，npm 11.20.0；`npm install && npm run build` 退出 0 |
-| 开发预览 | `npm run dev -- --port 4321` 正常启动；首页请求 HTTP 200 |
-| 中英双语 | 两种语言各含首页、解决方案、行业、产品、关于、联系；语言切换保留当前页面 |
-| 亮/暗色 | CSS 变量主题；系统偏好、手动切换、跨页面与刷新记忆均检查 |
-| 手机与桌面宽度 | 12 页面 × 2 主题 × 320/390/768/1440px 均无水平溢出 |
-| 页面运行与资源 | 无页面脚本错误、失败资源或外部页面请求；内部导航链接全部 HTTP 200 |
-| 无 JS 可访问 | 首页内容与产品链接在关闭 JS 时仍可使用 |
-| 可追溯工作流图 | 原创 SVG，生长 → 制备 → 测量 → 分析 → 仿真，样品 ID 串联；标为目标工作流示意 |
-| 三块产品与真实状态 | 首页三张产品卡；产品页含“问题 / 工作方式 / 当前状态”；状态文字与徽章同时呈现 |
-| 诚实边界 | 无客户 logo、评价、融资、奖项、下载量或虚构性能数据；规划功能使用计划/将来语态 |
-| 联系与隐私 | mailto 入口；没有表单、收集服务、外链图片、外链字体、iframe 或统计脚本 |
-| Lighthouse | 12 页面 × 2 主题，默认手机模拟节流；性能最低 100、可访问性最低 100 |
-| 文档 | README 含 {{...}} 清单、双语文案修改方法、GitHub Pages 配置及 Gitee Pages 现状与准备步骤 |
+通过：6 个页面（首页 / 产品 / 关于 × 中 / 英）× 亮 / 暗主题 × 320 / 390 / 768 / 1440 px。
 
-机器验收记录：[verification.json](verification.json)、[lighthouse-summary.json](lighthouse-summary.json)。完整 Lighthouse JSON/HTML 保留在本地 `artifacts/`，不提交到仓库。
+- 无横向溢出；每页一个 h1；所有图片带 alt 与固有尺寸
+- 内部链接与页内锚点全部有效；无外部网络请求；无脚本错误
+- 诚实标注存在：首屏“示意数据”、产品截图“开发版界面”、AI“概念示意”（中英对应）
+- 产品截图切换（ARIA tabs）、主题切换与持久化、语言切换保留页面与主题、手机菜单
+- 关闭 JavaScript 时内容可见、导航可用
 
-## GitHub Pages 线上验收
+截图：`artifacts/{zh,en}-{light,dark}-{mobile,desktop}[-top].png`。
 
-- 中文：[https://shajiuquan.github.io/company-site/](https://shajiuquan.github.io/company-site/)
-- 英文：[https://shajiuquan.github.io/company-site/en/](https://shajiuquan.github.io/company-site/en/)
-- [部署任务成功](https://github.com/ShaJiuquan/company-site/actions/runs/36596477789)，对应网站源代码提交 `53f8d0a6e4e924c2b7272edb49ad0e4fd075e081`。
-- 12 个公开页面、1 份 CSS 和 favicon 共 14 个文件全部与本地构建产物逐字节相同；子页面直接访问正常。[线上文件核对](deployment-verification.json)
-- 线上中英文首页 × 亮/暗主题共 4 组默认手机 Lighthouse：性能均 100、可访问性均 100。[线上分数](online-lighthouse-summary.json)
-- 后续的验收文档提交不改变网站内容，因此不重复触发发布。
+## Lighthouse（`npm run audit`，默认手机模拟 + 节流）
 
-## 手机截图（390 × 844 视口，全页）
+| 页面 | 亮色 | 暗色 |
+| --- | --- | --- |
+| `/` | 性能 100 · 无障碍 100 | 性能 100 · 无障碍 100 |
+| `/products/` | 性能 100 · 无障碍 100 | 性能 100 · 无障碍 100 |
+| `/about/` | 性能 100 · 无障碍 100 | 性能 100 · 无障碍 100 |
+| `/en/` | 性能 100 · 无障碍 100 | 性能 100 · 无障碍 100 |
+| `/en/products/` | 性能 100 · 无障碍 100 | 性能 100 · 无障碍 100 |
+| `/en/about/` | 性能 100 · 无障碍 100 | 性能 100 · 无障碍 100 |
 
-- [中文 · 亮色](zh-light-mobile.png)
-- [中文 · 暗色](zh-dark-mobile.png)
-- [英文 · 亮色](en-light-mobile.png)
-- [英文 · 暗色](en-dark-mobile.png)
+汇总：`artifacts/lighthouse-summary.json`。分数是网站本身的验收记录，不代表产品能力。
 
-同目录还包含四张手机首屏、四张桌面全页与四张桌面首屏截图。
+## 待确认
 
-## 待确认或未做到的事项
-
-1. `{{团队介绍}}` 尚未提供，关于页保留占位段落。
-2. `{{联系邮箱}}` 尚未提供，mailto 保留占位符，并在页面明确提示；当前无法正常发信。
-3. 英文品牌名尚未指定，英文页面继续使用“开特云”。
-4. 未配置自定义域名；本次使用 GitHub Pages 地址。
-5. Gitee Pages 现已下架，无法进行该服务的实际部署；README 中的相关准备流程明确以服务恢复为条件。
-6. 网站描述的是当前产品状态与建设方向，未制作虚构客户案例或宣称整个数字主线已交付。
-
-## 趋势主题的编辑依据
-
-AI for Science、仪器自动化与材料数据溯源用于组织官网叙事，未把其他机构成果作为开特云能力或背书。供内容维护者参考的公开原始资料：
-
-- [材料数据互操作性、可重用性与溯源的研究方向](https://www.nist.gov/mml/mmsd/data-and-ai-driven-materials-science-group/data-and-protocols)
-- [材料实验室模块化与数字基础设施](https://www.nist.gov/programs-projects/development-standards-support-modular-and-autonomous-laboratory-ecosystem)
-- [2026 年关于人工参与的 AI 仪器操作研究](https://www.nature.com/articles/s41524-026-02005-0)
-
-这些名称与链接仅出现在交付文档中，不出现在网站的客户、合作或品牌背书位置。
+1. `{{联系邮箱}}`：所有“预约交流 / 写信给我们”按钮指向它，填写前无法真正发信。
+2. `{{团队介绍}}`：关于页团队卡片。
+3. 关于页与首页“我们”一段写了创始团队的实验背景（超高真空、低温、强磁场；写过 MBE / STM / PPMS 仪器软件），发布前请本人确认措辞。
+4. 英文品牌名：英文页面目前保留“开特云”。
+5. 产品截图来自 DataViewer 开发版（含尚未合入主线的样品功能）与演示数据。
