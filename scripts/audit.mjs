@@ -7,7 +7,7 @@ const origin = process.env.VERIFY_URL || 'http://127.0.0.1:4322/company-site/';
 const chromePath = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const chrome = await launch({ chromePath, chromeFlags: ['--headless', '--disable-gpu', '--no-first-run', '--disable-background-networking'] });
 const browser = await chromium.connectOverCDP(`http://127.0.0.1:${chrome.port}`);
-const routes = ['', 'solutions/', 'industries/', 'products/', 'about/', 'contact/', 'en/', 'en/solutions/', 'en/industries/', 'en/products/', 'en/about/', 'en/contact/'];
+const routes = ['', 'products/', 'about/', 'en/', 'en/products/', 'en/about/'];
 const results = [];
 await mkdir('artifacts', { recursive: true });
 try {

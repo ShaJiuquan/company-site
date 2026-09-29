@@ -1,8 +1,0 @@
----
-import { statusLabels, type Language, type Status } from '../data/site';
-interface Props { status: Status; lang: Language; }
-const { status, lang } = Astro.props;
----
-<span class:list={['status', `status--${status}`]} data-status={status}>
-  <span class="status-dot" aria-hidden="true"></span>{statusLabels[lang][status]}
-</span>

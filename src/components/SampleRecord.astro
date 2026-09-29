@@ -1,0 +1,95 @@
+---
+// Hero visual: one sample, three instruments, one thread. All data is
+// illustrative and computed at build time (see src/lib/curves.ts and
+// scripts/gen-science.mjs) — no client JavaScript.
+import { Image } from 'astro:assets';
+import rheed from '../assets/science/rheed.webp';
+import stm from '../assets/science/stm.webp';
+import { rheedOscillation, stepProfile, walCusp } from '../lib/curves';
+import { copy } from '../data/copy';
+import type { Language } from '../data/site';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = copy[lang].record;
+const [growth, topo, transport] = t.rows;
+const osc = rheedOscillation(200, 126);
+const profile = stepProfile(220, 96);
+const mr = walCusp(440, 84);
+const alt = lang === 'zh'
+  ? { rheed: 'RHEED 衍射条纹示意图', stm: 'STM 形貌示意图：台阶与三角形缺陷' }
+  : { rheed: 'Illustrative RHEED streak pattern', stm: 'Illustrative STM topograph with terraces and triangular defects' };
+---
+<figure class="record" aria-label={`${t.id} · ${t.material}`}>
+  <div class="record-head">
+    <span class="record-id">{t.id}</span>
+    <span class="record-material">{t.material}</span>
+  </div>
+  <div class="record-body">
+    <div class="record-row">
+      <span class="record-date">{growth.date}</span>
+      <div class="record-main">
+        <div class="record-label"><span class="record-kind">{growth.kind}</span><span class="record-meta">{growth.meta}</span></div>
+        <div class="record-viz">
+          <div class="viz-tile viz-tile--rheed">
+            <Image src={rheed} alt={alt.rheed} widths={[360, 720]} sizes="(max-width: 520px) 90vw, 240px" loading="eager" />
+          </div>
+          <div class="viz-chart">
+            <svg viewBox="0 0 200 150" role="img" aria-label={growth.note}>
+              <line class="chart-axis" x1="0" y1="134" x2="200" y2="134" />
+              <path class="trace-line trace-draw" d={osc} pathLength="1" />
+              <text class="chart-label" x="0" y="147">{t.axes.time}</text>
+              <text class="chart-label" x="200" y="147" text-anchor="end">{t.axes.intensity}</text>
+            </svg>
+          </div>
+        </div>
+        <span class="record-note">{growth.note}</span>
+      </div>
+    </div>
+
+    <div class="record-row record-row--stm">
+      <span class="record-date">{topo.date}</span>
+      <div class="record-main">
+        <div class="record-label"><span class="record-kind">{topo.kind}</span><span class="record-meta">{topo.meta}</span></div>
+        <div class="record-viz">
+          <div class="viz-tile viz-tile--stm">
+            <Image src={stm} alt={alt.stm} widths={[264, 520]} sizes="(max-width: 520px) 90vw, 132px" loading="eager" />
+          </div>
+          <div class="viz-chart">
+            <svg viewBox="0 0 220 116" role="img" aria-label={topo.note}>
+              <line class="chart-grid" x1="0" y1="26" x2="220" y2="26" />
+              <line class="chart-grid" x1="0" y1="62" x2="220" y2="62" />
+              <line class="chart-axis" x1="0" y1="102" x2="220" y2="102" />
+              <path class="trace-line trace-line--copper" d={profile} />
+              <text class="chart-label" x="0" y="114">{t.axes.distance}</text>
+              <text class="chart-label" x="220" y="114" text-anchor="end">{t.axes.height}</text>
+            </svg>
+          </div>
+        </div>
+        <span class="record-note">{topo.note}</span>
+      </div>
+    </div>
+
+    <div class="record-row">
+      <span class="record-date">{transport.date}</span>
+      <div class="record-main">
+        <div class="record-label"><span class="record-kind">{transport.kind}</span><span class="record-meta">{transport.meta}</span></div>
+        <div class="record-viz record-viz--wide">
+          <div class="viz-chart">
+            <svg viewBox="0 0 440 104" role="img" aria-label={transport.note}>
+              <line class="chart-grid" x1={mr.zeroX} y1="0" x2={mr.zeroX} y2="90" />
+              <line class="chart-axis" x1="0" y1="90" x2="440" y2="90" />
+              <path class="trace-line trace-mr" d={mr.path} pathLength="1" />
+              <text class="chart-label" x="0" y="102">−9</text>
+              <text class="chart-label" x={mr.zeroX} y="102" text-anchor="middle">0</text>
+              <text class="chart-label" x="440" y="102" text-anchor="end">9 · {t.axes.field}</text>
+              <text class="chart-label" x={mr.zeroX + 6} y="10">{t.axes.mr}</text>
+            </svg>
+          </div>
+        </div>
+        <span class="record-note">{transport.note}</span>
+      </div>
+    </div>
+  </div>
+  <figcaption class="record-foot"><span>{t.foot}</span><span class="mono">{t.disclaimer}</span></figcaption>
+</figure>

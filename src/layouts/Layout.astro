@@ -1,86 +1,151 @@
 ---
-import { company, content, type Language, type Page } from '../data/site';
+import Logo from '../components/Logo.astro';
 import Icon from '../components/Icon.astro';
+import { copy } from '../data/copy';
+import { asset, company, href, mailto, type Language, type Page } from '../data/site';
 import '../styles/global.css';
+
 interface Props { lang: Language; page: Page; }
 const { lang, page } = Astro.props;
-const t = content[lang];
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const href = (p: Page, language = lang) => `${base}/${language === 'en' ? 'en/' : ''}${p === 'home' ? '' : `${p}/`}`;
-const pageTitle = page === 'home' ? (lang === 'zh' ? '材料实验室的数字主线' : 'A digital thread for materials laboratories') : t.nav[page];
-const canonical = new URL(href(page), Astro.site);
+const t = copy[lang];
+const meta = t.meta[page];
+const otherLang: Language = lang === 'zh' ? 'en' : 'zh';
+const canonical = new URL(href(lang, page), Astro.site);
+const navPages: Page[] = ['products', 'about'];
 ---
 <!doctype html>
 <html lang={lang === 'zh' ? 'zh-CN' : 'en'} data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={t.description} />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#f4f6f2" />
-    <title>{company.name} · {pageTitle}</title>
-    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <meta name="theme-color" content="#05070a" />
+    <link rel="icon" type="image/svg+xml" href={asset('favicon.svg')} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="zh-CN" href={new URL(href(page, 'zh'), Astro.site)} />
-    <link rel="alternate" hreflang="en" href={new URL(href(page, 'en'), Astro.site)} />
-    <link rel="alternate" hreflang="x-default" href={new URL(href(page, 'zh'), Astro.site)} />
+    <link rel="alternate" hreflang="zh-CN" href={new URL(href('zh', page), Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL(href('en', page), Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(href('zh', page), Astro.site)} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(asset('og.png'), Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
     <script is:inline>
       (() => {
+        const root = document.documentElement;
+        root.classList.add('js');
         let theme;
         try { theme = localStorage.getItem('company-site-theme'); } catch {}
         if (theme !== 'light' && theme !== 'dark') theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        document.documentElement.dataset.theme = theme;
+        root.dataset.theme = theme;
       })();
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#main">{t.skip}</a>
+    <a class="skip-link" href="#main">{t.ui.skip}</a>
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href={href('home')} aria-label={`${company.name} ${t.nav.home}`}>
-          <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="m20 4 14 8v16l-14 8-14-8V12Z" stroke="currentColor" stroke-width="1.6"/><path d="m6 12 14 8 14-8M20 4v32" stroke="currentColor" stroke-width="1.6"/><circle cx="20" cy="20" r="4" fill="currentColor"/></svg>
-          <span>{company.name}</span>
-        </a>
-        <nav class="main-nav" aria-label={t.menu}>
-          {(Object.keys(t.nav) as Page[]).filter(p => p !== 'home').map(p => <a href={href(p)} aria-current={p === page ? 'page' : undefined}>{t.nav[p]}</a>)}
+        <a href={href(lang, 'home')} aria-label={company.name}><Logo /></a>
+        <nav class="nav" aria-label={t.ui.menu}>
+          {navPages.map((p) => <a href={href(lang, p)} aria-current={p === page ? 'page' : undefined}>{t.ui.nav[p]}</a>)}
         </nav>
         <div class="header-tools">
-          <a class="language-link" href={href(page, lang === 'zh' ? 'en' : 'zh')} aria-label={t.languageLabel} lang={lang === 'zh' ? 'en' : 'zh-CN'}>{t.otherLanguage}</a>
-          <button class="theme-toggle" type="button" aria-label={t.theme} data-light-label={t.light} data-dark-label={t.dark}>
-            <span class="sun-icon"><Icon name="sun" /></span><span class="moon-icon"><Icon name="moon" /></span>
+          <a class="lang-link" href={href(otherLang, page)} lang={otherLang === 'zh' ? 'zh-CN' : 'en'} aria-label={t.ui.otherLangLabel}>{t.ui.otherLang}</a>
+          <button class="icon-btn theme-btn" type="button" data-to-light={t.ui.themeToLight} data-to-dark={t.ui.themeToDark} aria-label={t.ui.themeToDark}>
+            <span class="sun"><Icon name="sun" size={18} /></span><span class="moon"><Icon name="moon" size={18} /></span>
+          </button>
+          <a class="btn btn-primary header-cta" href={mailto}>{t.ui.talk}</a>
+          <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" data-open={t.ui.menu} data-close={t.ui.close} aria-label={t.ui.menu}>
+            <Icon name="menu" size={20} />
           </button>
         </div>
       </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label={t.ui.menu}>
+        {navPages.map((p) => <a href={href(lang, p)} aria-current={p === page ? 'page' : undefined}>{t.ui.nav[p]}</a>)}
+        <a class="btn btn-primary" href={mailto}>{t.ui.talk}</a>
+      </nav>
     </header>
+
     <main id="main" tabindex="-1"><slot /></main>
+
     <footer class="site-footer">
-      <div class="container footer-top">
-        <div><a class="footer-brand" href={href('home')}>{company.name}</a><p>{t.footerText}</p></div>
-        <nav aria-label={lang === 'zh' ? '页脚导航' : 'Footer navigation'}>{(Object.keys(t.nav) as Page[]).map(p => <a href={href(p)}>{t.nav[p]}</a>)}</nav>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <Logo />
+            <span>{t.footer.tagline}</span>
+          </div>
+          <nav class="footer-nav" aria-label={t.footer.nav}>
+            {navPages.map((p) => <a href={href(lang, p)}>{t.ui.nav[p]}</a>)}
+            <a href={mailto}>{t.ui.talk}</a>
+            <a href={href(otherLang, page)} lang={otherLang === 'zh' ? 'zh-CN' : 'en'}>{t.ui.otherLang}</a>
+          </nav>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 {company.name}</span>
+          <span>{t.footer.privacy}</span>
+        </div>
       </div>
-      <div class="container footer-bottom"><span>© {new Date().getFullYear()} {company.name}</span><span>{t.footerNote}</span><span class="mono">MATERIALS / DIGITAL THREAD</span></div>
     </footer>
+
     <script>
-      const button = document.querySelector<HTMLButtonElement>('.theme-toggle');
-      const update = () => {
-        const dark = document.documentElement.dataset.theme === 'dark';
-        if (button) button.setAttribute('aria-label', (dark ? button.dataset.lightLabel : button.dataset.darkLabel) || 'Toggle color theme');
-        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#101c21' : '#f4f6f2');
+      const root = document.documentElement;
+
+      const themeBtn = document.querySelector<HTMLButtonElement>('.theme-btn');
+      const syncTheme = () => {
+        const dark = root.dataset.theme === 'dark';
+        themeBtn?.setAttribute('aria-label', (dark ? themeBtn.dataset.toLight : themeBtn.dataset.toDark) ?? '');
       };
-      update();
-      button?.addEventListener('click', () => {
-        const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-        document.documentElement.dataset.theme = theme;
-        try { localStorage.setItem('company-site-theme', theme); } catch {}
-        update();
+      syncTheme();
+      themeBtn?.addEventListener('click', () => {
+        root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem('company-site-theme', root.dataset.theme); } catch {}
+        syncTheme();
       });
-      matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-        let stored;
-        try { stored = localStorage.getItem('company-site-theme'); } catch {}
-        if (stored !== 'light' && stored !== 'dark') {
-          document.documentElement.dataset.theme = event.matches ? 'dark' : 'light';
-          update();
-        }
+
+      const menuBtn = document.querySelector<HTMLButtonElement>('.menu-btn');
+      menuBtn?.addEventListener('click', () => {
+        const open = document.body.classList.toggle('nav-open');
+        menuBtn.setAttribute('aria-expanded', String(open));
+        menuBtn.setAttribute('aria-label', (open ? menuBtn.dataset.close : menuBtn.dataset.open) ?? '');
+      });
+
+      const reveals = document.querySelectorAll<HTMLElement>('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) { entry.target.classList.add('is-in'); io.unobserve(entry.target); }
+          }
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add('is-in'));
+      }
+
+      document.querySelectorAll<HTMLElement>('[data-tabs]').forEach((group) => {
+        const tabs = Array.from(group.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+        const select = (tab: HTMLButtonElement) => {
+          for (const other of tabs) {
+            const on = other === tab;
+            other.setAttribute('aria-selected', String(on));
+            other.tabIndex = on ? 0 : -1;
+            const panel = document.getElementById(other.getAttribute('aria-controls') ?? '');
+            if (panel) panel.hidden = !on;
+          }
+        };
+        tabs.forEach((tab, i) => {
+          tab.addEventListener('click', () => select(tab));
+          tab.addEventListener('keydown', (event) => {
+            const step = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
+            if (!step) return;
+            const next = tabs[(i + step + tabs.length) % tabs.length];
+            select(next);
+            next.focus();
+          });
+        });
       });
     </script>
   </body>

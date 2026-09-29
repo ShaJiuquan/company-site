@@ -1,0 +1,14 @@
+---
+// Mark: a sample (rounded die) with the digital thread leaving its center.
+interface Props { label?: string; }
+const { label } = Astro.props;
+---
+<span class="logo">
+  <svg class="logo-mark" viewBox="0 0 32 32" width="28" height="28" fill="none" aria-hidden="true">
+    <rect x="3" y="8" width="16" height="16" rx="4.5" stroke="currentColor" stroke-width="2" />
+    <path d="M11 16h14.5" stroke="var(--phosphor)" stroke-width="2" stroke-linecap="round" />
+    <circle cx="11" cy="16" r="2.6" fill="var(--phosphor)" />
+    <circle cx="27.6" cy="16" r="2.4" stroke="var(--phosphor)" stroke-width="1.8" />
+  </svg>
+  <span class="logo-word">{label ?? '开特云'}</span>
+</span>

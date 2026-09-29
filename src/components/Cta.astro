@@ -1,0 +1,16 @@
+---
+import Icon from './Icon.astro';
+import { copy } from '../data/copy';
+import { mailto, type Language } from '../data/site';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = copy[lang].cta;
+---
+<section class="section stage cta-band" aria-labelledby="cta-title">
+  <div class="container cta-inner reveal">
+    <h2 class="h2" id="cta-title">{t.title}</h2>
+    <p>{t.text}</p>
+    <a class="btn btn-primary" href={mailto}><Icon name="mail" size={18} />{t.button}</a>
+  </div>
+</section>

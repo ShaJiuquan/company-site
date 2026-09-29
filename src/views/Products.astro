@@ -1,17 +1,125 @@
 ---
-import { content, type Language } from '../data/site';
-import StatusBadge from '../components/StatusBadge.astro';
+import { Image } from 'astro:assets';
+import Cta from '../components/Cta.astro';
 import Icon from '../components/Icon.astro';
-const { lang } = Astro.props as { lang: Language };
-const t = content[lang];
-const p = t.productPage;
+import SequenceCard from '../components/SequenceCard.astro';
+import samples from '../assets/product/dv-samples.webp';
+import ndplot from '../assets/product/dv-ndplot.webp';
+import workflows from '../assets/product/dv-workflows.webp';
+import provenance from '../assets/product/dv-provenance.webp';
+import { copy } from '../data/copy';
+import type { Language } from '../data/site';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = copy[lang].productsPage;
+const disclaimer = copy[lang].product.disclaimer;
+const small = [
+  { src: ndplot, label: t.shots.ndplot, frame: 'Plot · dIdV_grid_NbSe2.3ds' },
+  { src: workflows, label: t.shots.workflows, frame: 'Workflows' },
+  { src: provenance, label: t.shots.provenance, frame: 'Provenance' },
+];
 ---
-<section class="page-intro container"><p class="eyebrow">{p.eyebrow}</p><h1 class="preserve-lines">{p.title}</h1><p class="intro-description">{p.intro}</p></section>
-<div class="container product-index">{t.products.map(product => <a href={`#${product.id}`}><span class="mono">{product.number}</span>{product.name}<Icon name="arrow" /></a>)}</div>
-<div class="container product-details">
-  <p class="status-legend">{p.legend}</p>
-  {t.products.map((product, i) => <article class="product-detail" id={product.id}>
-    <header class="product-detail-header"><span class="product-icon"><Icon name={(['sample','instrument','agent'] as const)[i]} /></span><p class="eyebrow">{product.number} / {product.label}</p><h2>{product.name}</h2><div class="status-row"><StatusBadge status={product.status} lang={lang}/>{product.phase && <span class="phase">{product.phase}</span>}</div></header>
-    <div class="product-detail-body"><div class="detail-sections"><section><h3>{p.problem}</h3><p>{product.problem}</p></section><section><h3>{p.how}</h3><p>{product.how}</p></section><section class="state-callout"><h3>{p.state}</h3><p>{product.state}</p></section></div><section class="detail-features"><h3>{p.features}</h3><ul class="feature-list">{product.features.map(feature => <li><span>{feature.text}</span><StatusBadge status={feature.status} lang={lang}/></li>)}</ul></section></div>
-  </article>)}
-</div>
+<section class="stage page-hero">
+  <div class="container">
+    <span class="eyebrow">{t.eyebrow}</span>
+    <h1 class="display"><span>{t.title[0]}</span><span>{t.title[1]}</span></h1>
+    <p class="lede">{t.lede}</p>
+    <nav class="jump" aria-label={t.eyebrow}>{t.jump.map((j) => <a href={`#${j.id}`}>{j.label}</a>)}</nav>
+  </div>
+</section>
+
+<section class="section stage showcase" id="dataviewer" aria-labelledby="dv-title">
+  <div class="container product-block">
+    <div class="product-intro reveal">
+      <div><span class="kicker">{t.dataviewer.kicker}</span><h2 class="h2" id="dv-title">{t.dataviewer.title}</h2></div>
+      <p class="lede">{t.dataviewer.text}</p>
+    </div>
+    <figure class="reveal" style="margin:0">
+      <div class="frame">
+        <div class="frame-bar"><i /><i /><i /><span class="frame-title">DataViewer — Samples · LAO-STO-0912-A2</span></div>
+        <Image src={samples} alt={`DataViewer · ${t.shots.samples}`} widths={[800, 1200, 1600, 2400]} sizes="(max-width: 1240px) 92vw, 1120px" />
+      </div>
+    </figure>
+    <div class="shots">
+      {small.map((s, i) => (
+        <figure class="reveal" style={`--delay:${i * 0.08}s`}>
+          <div class="frame">
+            <div class="frame-bar"><i /><i /><i /><span class="frame-title">{s.frame}</span></div>
+            <Image src={s.src} alt={`DataViewer · ${s.label}`} widths={[600, 900, 1200]} sizes="(max-width: 900px) 92vw, 370px" />
+          </div>
+          <figcaption>{s.label}</figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="concept">{disclaimer}</p>
+  </div>
+</section>
+
+<section class="section section--tight" aria-label={t.dataviewer.title}>
+  <div class="container product-block">
+    <div class="feature-grid">
+      {t.dataviewer.features.map((f) => (
+        <article class="feature">
+          <span class="icon-wrap"><Icon name={f.icon} size={22} /></span>
+          <h3 class="h3">{f.title}</h3>
+          <p>{f.text}</p>
+        </article>
+      ))}
+    </div>
+    <div class="now-next"><p>{t.dataviewer.now}</p><p>{t.dataviewer.next}</p></div>
+  </div>
+</section>
+
+<section class="section tint" id="instruments" aria-labelledby="inst-title">
+  <div class="container split">
+    <div class="split-copy reveal">
+      <span class="eyebrow">{t.instruments.kicker}</span>
+      <h2 class="h2" id="inst-title">{t.instruments.title}</h2>
+      <p class="lede">{t.instruments.text}</p>
+      <ul class="bullets">{t.instruments.bullets.map((b) => <li><Icon name="check" size={18} /><span>{b}</span></li>)}</ul>
+      <div class="now-next"><p>{t.instruments.now}</p><p>{t.instruments.next}</p></div>
+    </div>
+    <div class="reveal" style="--delay:0.1s"><SequenceCard lang={lang} /></div>
+  </div>
+</section>
+
+<section class="section stage stage-1" id="agent" aria-labelledby="agent-title">
+  <div class="container product-block">
+    <div class="product-intro reveal">
+      <div>
+        <span class="kicker">{t.agent.kicker}</span>
+        <h2 class="h2" id="agent-title">{t.agent.title}</h2>
+      </div>
+      <div style="display:grid;gap:16px">
+        <span class="status-chip">{t.agent.status}</span>
+        <p class="lede">{t.agent.text}</p>
+      </div>
+    </div>
+    <div class="principles">
+      {t.agent.principles.map((p, i) => (
+        <article class="principle reveal" style={`--delay:${i * 0.08}s`}>
+          <Icon name={p.icon} size={22} />
+          <h3 class="h3">{p.title}</h3>
+          <p>{p.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="roadmap" aria-labelledby="roadmap-title">
+  <div class="container product-block">
+    <h2 class="h2 reveal" id="roadmap-title">{t.roadmap.title}</h2>
+    <div class="roadmap">
+      {t.roadmap.columns.map((c, i) => (
+        <div class="roadmap-col reveal" style={`--delay:${i * 0.08}s`}>
+          <h3>{c.label}</h3>
+          <ul>{c.items.map((item) => <li>{item}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<Cta lang={lang} />

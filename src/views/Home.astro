@@ -1,60 +1,169 @@
 ---
-import { content, type Language } from '../data/site';
-import { marketing } from '../data/marketing';
-import StatusBadge from '../components/StatusBadge.astro';
+import Cta from '../components/Cta.astro';
 import Icon from '../components/Icon.astro';
-import SampleVisual from '../components/SampleVisual.astro';
-import DigitalThread from '../components/DigitalThread.astro';
-import IndustryArt from '../components/IndustryArt.astro';
-const { lang } = Astro.props as { lang: Language };
-const t = content[lang];
-const m = marketing[lang];
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const href = (page: string) => `${base}/${lang === 'en' ? 'en/' : ''}${page}/`;
+import SampleRecord from '../components/SampleRecord.astro';
+import SequenceCard from '../components/SequenceCard.astro';
+import Showcase from '../components/Showcase.astro';
+import { copy } from '../data/copy';
+import { href, mailto, type Language } from '../data/site';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = copy[lang];
+const scatter = [
+  { x: '0%', y: '12%', r: '-4deg' },
+  { x: '19%', y: '58%', r: '3deg' },
+  { x: '37%', y: '4%', r: '-2deg' },
+  { x: '52%', y: '50%', r: '4deg' },
+  { x: '69%', y: '10%', r: '2.5deg' },
+  { x: '76%', y: '62%', r: '-3.5deg' },
+];
 ---
-<section class="marketing-hero">
-  <div class="hero container">
+<section class="stage hero">
+  <div class="container hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="tiny-cross" aria-hidden="true">+</span> {m.heroEyebrow}</p>
-      <h1><span>{m.hero[0]}</span><span class="accent-text">{m.hero[1]}</span></h1>
-      <p class="hero-description">{m.heroDescription}</p>
-      <div class="button-row"><a class="button primary" href={href('solutions')}>{m.heroAction}<Icon name="arrow"/></a><a class="button secondary" href={href('contact')}>{m.heroSecondary}</a></div>
-      <p class="hero-state">{m.heroFootnote}</p>
+      <span class="eyebrow">{t.hero.eyebrow}</span>
+      <h1 class="display hero-title"><span>{t.hero.title[0]}</span><span class="accent">{t.hero.title[1]}</span></h1>
+      <p class="lede">{t.hero.lede}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href={mailto}>{t.hero.primary}<Icon name="arrow" size={18} /></a>
+        <a class="btn btn-ghost" href={href(lang, 'products')}>{t.hero.secondary}</a>
+      </div>
     </div>
-    <SampleVisual lang={lang}/>
-  </div>
-  <div class="container hero-bottom"><span class="mono">GROWTH → MEASUREMENT → INSIGHT</span><span>{lang === 'zh' ? '材料实验室的数字主线' : 'A DIGITAL THREAD FOR MATERIALS LABS'}</span></div>
-</section>
-<div class="industry-strip container" aria-label={lang === 'zh' ? '面向的行业与团队' : 'Industries and teams we focus on'}>{m.industryStrip.map((label, i) => <span><span class="mono">0{i+1}</span>{label}</span>)}</div>
-<section class="section workflow-section container">
-  <div class="section-heading split-heading"><div><p class="eyebrow">{m.solutionEyebrow}</p><h2>{m.solutionTitle[0]}<br/><span class="accent-text">{m.solutionTitle[1]}</span></h2></div><div><p class="section-description">{m.solutionIntro}</p><a class="text-link" href={href('solutions')}>{m.solutionAction}<Icon name="arrow"/></a></div></div>
-  <DigitalThread lang={lang}/>
-  <p class="positioning-line">{t.tagline}</p>
-  <div class="solution-pillars">{m.solutionPillars.map((pillar, i) => <article><span class="mono pillar-number">0{i+1}</span><p class="eyebrow">{pillar.subtitle}</p><h3>{pillar.title}</h3><p>{pillar.text}</p><div class="status-row"><StatusBadge status={pillar.status} lang={lang}/><span class="phase">{pillar.scope}</span></div></article>)}</div>
-</section>
-<section class="section industries-section">
-  <div class="container">
-    <div class="section-heading split-heading"><div><p class="eyebrow">{m.industryEyebrow}</p><h2>{m.industryTitle[0]}<br/>{m.industryTitle[1]}</h2></div><div><p class="section-description">{m.industryIntro}</p><a class="text-link" href={href('industries')}>{m.industryAction}<Icon name="arrow"/></a></div></div>
-    <div class="industry-grid">{m.industries.map(industry => <a class="industry-card" href={`${href('industries')}#${industry.id}`}><div class="industry-art-wrap"><IndustryArt kind={industry.id as 'semiconductors' | 'quantum-materials'}/><span class="industry-art-label mono">{industry.code}</span></div><div class="industry-card-copy"><p class="eyebrow">{industry.audience}</p><h3>{industry.title}<Icon name="arrow"/></h3><p>{industry.intro}</p></div></a>)}</div>
+    <SampleRecord lang={lang} />
   </div>
 </section>
-<section class="section trends-section container">
-  <div class="section-heading split-heading"><div><p class="eyebrow">{m.trendEyebrow}</p><h2 class="preserve-lines">{m.trendTitle}</h2></div><p class="section-description">{m.trendIntro}</p></div>
-  <div class="trend-grid">{m.trends.map((trend,i) => <article><div class="trend-top"><span class="mono">0{i+1}</span><StatusBadge status={trend.status} lang={lang}/></div><p class="trend-keyword">{trend.keyword}</p><h3>{trend.title}</h3><p>{trend.text}</p></article>)}</div>
-</section>
-<section class="section products-section" id="products">
+
+<section class="section" aria-labelledby="problem-title">
   <div class="container">
-    <div class="section-heading"><p class="eyebrow">{m.productEyebrow}</p><h2>{m.productTitle}</h2><p class="section-description">{m.productIntro}</p></div>
-    <div class="product-grid">
-      {t.products.map((product,i) => <article class="product-card">
-        <div class="card-top"><span class="product-icon"><Icon name={(['sample','instrument','agent'] as const)[i]}/></span><span class="mono">/{product.number}</span></div>
-        <p class="product-label">{product.label}</p><h3>{product.name}</h3>
-        <div class="status-row"><StatusBadge status={product.status} lang={lang}/>{product.phase && <span class="phase">{product.phase}</span>}</div>
-        <p class="product-summary">{product.summary}</p>
-        <ul class="feature-list">{product.features.filter((_,index) => i===1 || index===0 || index===product.features.length-1).map(feature => <li><span>{feature.text}</span><StatusBadge status={feature.status} lang={lang}/></li>)}</ul>
-        <a class="card-link" href={`${href('products')}#${product.id}`}>{t.details}<span class="sr-only"> — {product.name}</span><Icon name="arrow"/></a>
-      </article>)}
+    <div class="section-head reveal">
+      <span class="eyebrow">{t.problem.eyebrow}</span>
+      <h2 class="h2" id="problem-title"><span>{t.problem.title[0]}</span><span>{t.problem.title[1]}</span></h2>
+      <p class="problem-caption">{t.problem.caption}</p>
+    </div>
+    <div class="scatter" aria-hidden="true">
+      {t.problem.files.map((f, i) => (
+        <div class="file-card reveal" style={`--x:${scatter[i].x};--y:${scatter[i].y};--r:${scatter[i].r};--delay:${i * 0.07}s`}>
+          <div class="file-bar"><i /><i /><i /><span>{f.where}</span></div>
+          <div class="file-body"><Icon name={f.icon} size={18} /><span class="file-name">{f.file}</span></div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
-<section class="contact-banner container"><div><p class="eyebrow">{t.contactEyebrow}</p><h2>{m.contactTitle[0]}<br/>{m.contactTitle[1]}</h2><p>{t.contactText}</p></div><a class="button banner-button" href={href('contact')}>{t.contactUs}<Icon name="arrow"/></a><span class="banner-orbit" aria-hidden="true"></span></section>
+
+<section class="section tint" aria-labelledby="thread-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">{t.thread.eyebrow}</span>
+      <h2 class="h2" id="thread-title"><span>{t.thread.title[0]}</span><span>{t.thread.title[1]}</span></h2>
+      <p class="lede">{t.thread.lede}</p>
+    </div>
+    <div class="thread-wrap reveal">
+      <div class="thread">
+        <div class="thread-sample"><span class="mono">{t.record.id}</span><small>{t.record.material}</small></div>
+        {t.thread.nodes.map((n, i) => (
+          <div class:list={['thread-node', { 'thread-node--hl': i >= 3 }]}>
+            <span class="thread-date">{n.date}</span>
+            <div class="thread-card"><strong>{n.label}</strong><span class="mono">{n.file}</span></div>
+          </div>
+        ))}
+      </div>
+      <p class="lineage"><Icon name="branch" size={16} />{t.thread.lineage}</p>
+    </div>
+    <div class="pillars">
+      {t.thread.pillars.map((p, i) => (
+        <article class="pillar reveal" style={`--delay:${i * 0.08}s`}>
+          <span class="icon-wrap"><Icon name={p.icon} size={22} /></span>
+          <h3 class="h3">{p.title}</h3>
+          <p>{p.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section stage showcase" aria-labelledby="product-title">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">{t.product.eyebrow}</span>
+      <h2 class="h2" id="product-title">{t.product.title}</h2>
+      <p class="lede">{t.product.lede}</p>
+    </div>
+    <div class="reveal">
+      <Showcase lang={lang} />
+    </div>
+    <div class="showcase-meta" style="margin-top: 14px">
+      <span class="status-pill">{t.product.status}</span>
+      <span class="mono">{t.product.disclaimer}</span>
+      <a class="link-arrow" href={href(lang, 'products')}>{t.product.more}<Icon name="arrow" size={16} /></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="instruments-title">
+  <div class="container split">
+    <div class="split-copy reveal">
+      <span class="eyebrow">{t.instruments.eyebrow}</span>
+      <h2 class="h2" id="instruments-title"><span>{t.instruments.title[0]}</span><span>{t.instruments.title[1]}</span></h2>
+      <p class="lede">{t.instruments.text}</p>
+      <div class="tags">{t.instruments.tags.map((tag) => <span class="tag" data-state={tag.state}>{tag.label}</span>)}</div>
+    </div>
+    <div class="reveal" style="--delay:0.1s"><SequenceCard lang={lang} /></div>
+  </div>
+</section>
+
+<section class="section stage stage-1" aria-labelledby="ai-title">
+  <div class="container split">
+    <div class="split-copy reveal">
+      <span class="eyebrow">{t.ai.eyebrow}</span>
+      <h2 class="h2" id="ai-title"><span>{t.ai.title[0]}</span><span>{t.ai.title[1]}</span></h2>
+      <p class="lede">{t.ai.text}</p>
+    </div>
+    <div class="reveal" style="--delay:0.1s">
+      <div class="chat" role="img" aria-label={t.ai.caption}>
+        <div class="chat-msg chat-msg--user">{t.ai.chat.user}</div>
+        <div class="chat-msg chat-msg--ai">
+          <span class="chat-who"><Icon name="spark" size={14} />Agent · MCP</span>
+          <span>{t.ai.chat.found}</span>
+          <div class="chat-runs">{t.ai.chat.runs.map((r) => <span><Icon name="file" size={14} />{r}</span>)}</div>
+          <span>{t.ai.chat.plan}</span>
+          <div class="chat-actions">
+            <span class="approve"><Icon name="check" size={15} />{t.ai.chat.approve}</span>
+            <span class="chat-note"><Icon name="branch" size={14} />{t.ai.chat.note}</span>
+          </div>
+        </div>
+      </div>
+      <p class="concept" style="margin-top: 12px">{t.ai.caption}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="audience-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">{t.audience.eyebrow}</span>
+      <h2 class="h2" id="audience-title">{t.audience.title}</h2>
+    </div>
+    <div class="cards-3">
+      {t.audience.items.map((item, i) => (
+        <article class="card reveal" style={`--delay:${i * 0.08}s`}>
+          <span class="icon-wrap"><Icon name={item.icon} size={22} /></span>
+          <h3 class="h3">{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section tint" aria-labelledby="story-title">
+  <div class="container story reveal">
+    <span class="eyebrow">{t.story.eyebrow}</span>
+    <h2 class="h2" id="story-title"><span>{t.story.title[0]}</span><span>{t.story.title[1]}</span></h2>
+    <p>{t.story.text}</p>
+    <a class="link-arrow" href={href(lang, 'about')}>{t.story.link}<Icon name="arrow" size={16} /></a>
+  </div>
+</section>
+
+<Cta lang={lang} />

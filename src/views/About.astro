@@ -1,10 +1,53 @@
 ---
-import { company, content, type Language } from '../data/site';
-import SampleVisual from '../components/SampleVisual.astro';
-const { lang } = Astro.props as { lang: Language };
-const p = content[lang].aboutPage;
+import Icon from '../components/Icon.astro';
+import { copy } from '../data/copy';
+import { company, mailto, type Language } from '../data/site';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = copy[lang].aboutPage;
+const cta = copy[lang].cta;
 ---
-<section class="page-intro container"><p class="eyebrow">{p.eyebrow}</p><h1 class="preserve-lines">{p.title}</h1><p class="intro-description">{p.intro}</p></section>
-<section class="about-team container"><div><p class="eyebrow">01 / TEAM</p><h2>{p.teamTitle}</h2><p class="team-placeholder">{company.team}</p>{company.team.startsWith('{{') && <p class="muted">{p.teamNote}</p>}</div><SampleVisual lang={lang}/></section>
-<section class="about-grid container"><article><p class="eyebrow">02 / FOCUS</p><h2>{p.scopeTitle}</h2><p>{p.scopeText}</p></article><article><p class="eyebrow">03 / DIRECTION</p><h2>{p.approachTitle}</h2><p>{p.approachText}</p></article></section>
-<section class="about-values container"><h2>{p.valuesTitle}</h2><ul>{p.values.map((value, i) => <li><span class="mono">0{i+1}</span>{value}</li>)}</ul></section>
+<section class="stage page-hero">
+  <div class="container">
+    <span class="eyebrow">{t.eyebrow}</span>
+    <h1 class="display"><span>{t.title[0]}</span><span>{t.title[1]}</span></h1>
+  </div>
+</section>
+
+<section class="section" aria-label={t.eyebrow}>
+  <div class="container about-story">
+    <p class="quote reveal">{t.quote}</p>
+    <div class="prose reveal" style="--delay:0.1s">{t.story.map((p) => <p>{p}</p>)}</div>
+  </div>
+</section>
+
+<section class="section tint" aria-labelledby="principles-title">
+  <div class="container">
+    <h2 class="h2 reveal" id="principles-title">{t.principlesTitle}</h2>
+    <div class="principles-4">
+      {t.principles.map((p, i) => (
+        <article class="card reveal" style={`--delay:${i * 0.07}s`}>
+          <span class="icon-wrap"><Icon name={p.icon} size={22} /></span>
+          <h3 class="h3">{p.title}</h3>
+          <p>{p.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-label={t.contactTitle}>
+  <div class="container duo">
+    <article class="panel reveal">
+      <h2 class="h3">{t.teamTitle}</h2>
+      <p class="placeholder">{company.team}</p>
+    </article>
+    <article class="panel reveal" style="--delay:0.08s">
+      <h2 class="h3">{t.contactTitle}</h2>
+      <p class="dim">{t.contactText}</p>
+      <a class="email" href={mailto}>{company.email}</a>
+      <a class="btn btn-ink" href={mailto} style="width:fit-content"><Icon name="mail" size={18} />{cta.button}</a>
+    </article>
+  </div>
+</section>

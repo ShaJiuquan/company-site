@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import samples from '../assets/product/dv-samples.webp';
+import ndplot from '../assets/product/dv-ndplot.webp';
+import workflows from '../assets/product/dv-workflows.webp';
+import provenance from '../assets/product/dv-provenance.webp';
+import { copy } from '../data/copy';
+import type { Language } from '../data/site';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = copy[lang].product;
+const shots = { samples, ndplot, workflows, provenance } as const;
+---
+<div data-tabs>
+  <div class="tabs" role="tablist" aria-label={t.tablist}>
+    {t.tabs.map((tab, i) => (
+      <button class="tab" type="button" role="tab" id={`tab-${tab.id}`} aria-controls={`panel-${tab.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>{tab.label}</button>
+    ))}
+  </div>
+  {t.tabs.map((tab, i) => (
+    <div class="tab-panel" role="tabpanel" id={`panel-${tab.id}`} aria-labelledby={`tab-${tab.id}`} hidden={i !== 0}>
+      <div class="frame">
+        <div class="frame-bar"><i /><i /><i /><span class="frame-title">DataViewer — {tab.frame}</span></div>
+        <Image src={shots[tab.id]} alt={`DataViewer · ${tab.label}`} widths={[800, 1200, 1600, 2400]} sizes="(max-width: 1240px) 92vw, 1120px" />
+      </div>
+      <div class="showcase-foot">
+        <p class="showcase-caption">{tab.caption}</p>
+      </div>
+    </div>
+  ))}
+</div>

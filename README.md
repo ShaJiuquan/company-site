@@ -1,86 +1,74 @@
 # 开特云 · company-site
 
-独立的 Astro + 原生 CSS 静态公司官网。中文默认，英文位于 `/en/`；包含首页、解决方案、行业场景、产品进展、关于、联系共十二个静态页面。首页按宣传型官网组织：品牌主张 → 解决方案 → 行业场景 → 科研趋势 → 三块产品支撑 → 联系。没有后端、表单、第三方收集服务、外链字体或图片。所有图形由本仓库 SVG/CSS 绘制。
+独立的 Astro + 原生 CSS 静态公司官网。中文默认，英文位于 `/en/`；三个页面 × 两种语言：首页、产品、关于。没有后端、表单、Cookie、第三方追踪、外链字体或外链图片。
+
+## 设计方向（v3）
+
+参照同类公司官网（Lila Sciences、Radical AI、Periodic Labs、Benchling、TetraScience）：一句大标题、真实的科学与产品画面、每屏极少的字。首页叙事：
+
+1. **首屏**：“每一块样品，都有完整的来路。”＋一张“样品记录卡”——同一个样品编号下的 RHEED 生长振荡、STM 形貌、PPMS 磁阻。
+2. **问题**：一块样品走过六台仪器，数据散落在六个地方（`fig2_final_FINAL(2).pdf`）。
+3. **做法**：同样六个文件，按时间串在样品编号上，并给出图 2 的溯源链。
+4. **产品**：DataViewer 开发版真实界面截图（样品档案 / 数据立方 / 工作流 / 溯源，可切换）。
+5. **仪器端**：PPMS 测控日常运行；MBE / RHEED 为下一步。
+6. **AI**：通过 MCP 开放给 AI 助手的概念示意（明确标注“概念示意 · 开发中”）。
+7. 为谁而建 → 我们 → 招募首批合作实验室。
+
+完整 brief 见 `BRIEF.md`。
 
 ## 开发和构建
 
-需要 Node.js ≥ 22.12.0 和 npm ≥ 9.6.5，推荐 Node.js 24（`.nvmrc`）。
+需要 Node.js ≥ 22.12.0（推荐 24，见 `.nvmrc`）。
 
 ```sh
 npm install
-npm run dev
-# http://127.0.0.1:4321/company-site/
+npm run dev        # http://127.0.0.1:4321/company-site/
 npm run build
 npm run preview -- --port 4322
-# http://127.0.0.1:4322/company-site/
 ```
 
-构建产物位于 `dist/`。亮暗主题使用 CSS 变量；首次访问跟随系统，手动选择保存在浏览器本地。语言切换保留当前页面。
+## 文件地图
+
+| 位置 | 内容 |
+| --- | --- |
+| `src/data/copy.ts` | 全部中英文案（改文案只改这里） |
+| `src/data/site.ts` | 公司名、邮箱、团队占位符；路由与链接工具 |
+| `src/views/` | 三个页面：`Home` / `Products` / `About` |
+| `src/components/` | 样品记录卡、产品截图切换、测量序列卡、CTA、Logo、图标 |
+| `src/lib/curves.ts` | 构建期计算的曲线：RHEED 振荡、STM 台阶剖面、HLN 弱反局域化磁阻 |
+| `scripts/gen-science.mjs` | 生成 `src/assets/science/` 的 RHEED 衍射图与 STM 形貌图（固定随机种子，可复现） |
+| `scripts/gen-og.mjs` | 生成链接分享卡片 `public/og.png` |
+| `src/assets/product/` | DataViewer 开发版界面截图（演示数据） |
+| `src/styles/global.css` | 设计系统：颜色 token、排版、各区块样式、亮/暗主题 |
 
 ## 占位符清单
 
-所有未知信息统一用 `{{...}}`，不编造内容。
-
 | 字段 | 当前值 | 修改位置 |
 | --- | --- | --- |
-| `{{公司名}}` | 已由用户确认替换为“开特云” | `src/data/site.ts` → `company.name` |
-| `{{团队介绍}}` | 待确认 | `src/data/site.ts` → `company.team` |
-| `{{联系邮箱}}` | 待确认；mailto 入口仍是该占位符，尚不能正常发信 | `src/data/site.ts` → `company.email` |
+| `{{联系邮箱}}` | 待确认；所有“预约交流 / 写信给我们”按钮都指向它 | `src/data/site.ts` → `company.email` |
+| `{{团队介绍}}` | 待确认；关于页“团队”卡片 | `src/data/site.ts` → `company.team` |
 
-“开特云”在英文页面保留中文品牌名，未自行命名英文品牌。确认英文名后可补充独立的英文名称字段。
+英文页面保留中文品牌名“开特云”，未自行命名英文品牌。
 
-## 修改文案与功能状态
+## 诚实规则（写进了验收脚本）
 
-`src/data/site.ts` 保存公司信息和双语产品/关于/联系文案；`src/data/marketing.ts` 保存双语品牌主张、解决方案、行业场景与趋势文案。修改对应的中英两份文案后重新构建。页面结构在 `src/views/`；示意图在 `src/components/`；颜色、排版和响应式规则在 `src/styles/global.css`。
+- 现在时只用于今天真在运行的能力：DataViewer 早期版本（CSV 导入、样品档案、N 维浏览、工作流、溯源）与 PPMS 测控。其余在句子里写成“下一步 / 正在开发 / 设计中”，不再贴满状态徽章。
+- 首屏样品记录卡标注“示意数据”；产品截图标注“开发版界面 · 演示数据”；AI 对话标注“概念示意 · 开发中”。`npm run verify` 会断言这些标注存在。
+- 不写客户、合作 logo、评价、下载量、融资、奖项或性能数字。Claude / Codex 仅描述计划兼容的助手，不表示合作或背书。
 
-每个功能对象的 `status` 只能为 `available`（可用）、`development`（开发中）、`planned`（规划中）。状态徽章同时包含文字与颜色。不要把规划中功能写成已经可用。
+## 验收
 
-- DataViewer：所有功能处于 alpha 开发中。
-- Instrument Workbench：PPMS 输运测量自动化仅限实验室内部使用；MBE/RHEED 接入规划中。数字主线图中的 SPM、制备及仿真是目标工作流示意，不代表已提供接入或仿真产品。
-- Agent 接口：全部规划中；设计要求是所有 AI 动作经人工批准并留痕。正文中的 Claude/Codex 仅描述计划兼容的助手，不表示合作或背书。
-
-网站没有客户、机构 logo、评价、销量、融资、奖项或虚构性能数字。首页图形标为“概念示意 / 非产品界面”。
-
-## GitHub Pages 部署
-
-当前配置：仓库 `ShaJiuquan/company-site`，目标地址 `https://shajiuquan.github.io/company-site/`。英文为 `https://shajiuquan.github.io/company-site/en/`。
-
-1. 在 GitHub 创建独立的 `company-site` 仓库，推送本目录的代码与 `package-lock.json` 到 `main`。
-2. 进入仓库 **Settings → Pages → Build and deployment → Source**，选择 **GitHub Actions**。
-3. `.github/workflows/deploy.yml` 会安装 Node.js 24，运行 `npm ci` 和 `npm run build`，上传并发布 `dist/`。
-4. 在 **Actions** 中检查部署成功，再访问目标地址以及 `/en/`，直接刷新产品、关于、联系页面确认正常。
-
-`astro.config.mjs` 的 `site` 为站点源地址，`base` 为仓库路径。部署到其他仓库时同时修改这两项。所有导航和资源路径均包含 `base`。
-
-官方参考：[Astro GitHub Pages 指南](https://docs.astro.build/en/guides/deploy/github/)。
-
-## Gitee Pages 部署状态与准备步骤
-
-截至 2026-09-30，Gitee 官方反馈说明 Pages 功能已下架，无法把“服务 → Gitee Pages → 部署”作为当前可执行的部署流程。本项目没有声称已部署到 Gitee Pages。参考：[Gitee 官方反馈](https://gitee.com/oschina/git-osc/issues/ID1EVM?skip_mobile=true)、[Pages 服务页面](https://gitee.com/openHappy/continew-starter/pages)。
-
-如该服务恢复并在你的账号开放，可按以下准备流程发布静态产物：
-
-1. 创建独立的 Gitee `company-site` 仓库，并以 Gitee 当时提供的实际站点地址确认 `site` 和 `base`。
-2. 按实际地址构建，例如：`SITE_URL=https://你的实际站点源地址 SITE_BASE=/company-site npm run build`。根域名部署用 `SITE_BASE=/`。
-3. 将 `dist/` 的**内容**提交到专门的 `pages` 分支，保证分支根目录有 `index.html`、`en/`、`_astro/` 与 `.nojekyll`。
-4. 仅当服务入口恢复时，在该仓库的 Pages 页面选择这个静态分支及根目录，按当时官方说明部署。后续更新需要重新构建并更新静态分支。
-5. 验证中英文、主题切换、子页面刷新与静态资源路径。服务仍不可用时，这些步骤只准备构建产物，不会生成可访问的网站。
-
-源代码托管到 Gitee 与 Pages 网站托管是不同事项。GitHub Pages 是本次实际部署目标。
-
-## 验收与截图
-
-先 `npm run build`、`npm run preview -- --port 4322`，在另一个终端运行：
+先 `npm run build` 并启动 `npm run preview -- --port 4322`，另开终端：
 
 ```sh
 npm run verify
 npm run audit
 ```
 
-脚本默认使用 macOS 已安装的 Chrome；其他系统将 `CHROME_PATH` 设置为本机 Chrome 可执行文件。可用 `VERIFY_URL` 指向另一预览地址或已部署的站点。浏览器测试运行在隔离的无头测试进程中，不使用个人浏览器资料。
+`verify`：6 个页面 × 2 个主题 × 320/390/768/1440px——无横向溢出、单个 h1、图片带 alt 与尺寸、内部链接与锚点有效、无外部请求、诚实标注存在、产品截图切换、主题持久化、语言切换保留页面、手机菜单、无 JavaScript 可浏览；并生成 `artifacts/` 下的中英 × 亮暗 × 手机/桌面截图。
 
-`verify` 检查十二个页面 × 两个主题 × 320/390/768/1440px，导航、语言保留页面、主题持久化、无 JS 导航、功能状态、静态链接、错误资源与外部页面请求。它生成首页中文/英文 × 亮/暗 × 390px 手机截图，以及桌面截图。
+`audit`：Lighthouse 默认手机模拟，12 个组合的性能与无障碍，最低要求 90。汇总见 `artifacts/lighthouse-summary.json`，验收记录见 `artifacts/ACCEPTANCE.md`。脚本默认使用 macOS 的 Chrome，其他系统设置 `CHROME_PATH`；`VERIFY_URL` 可指向其他预览地址或线上站点。
 
-`audit` 使用 Lighthouse 默认手机模拟和节流，检查十二个页面 × 两个主题的性能与可访问性，两项最低要求均为 90。完整报告留在本机 `artifacts/`，可提交的汇总为 `artifacts/lighthouse-summary.json`。分数是网站验收记录，不是产品能力或实验测量性能。
+## 部署（GitHub Pages）
 
-验收交付见 `artifacts/ACCEPTANCE.md`。
+推送到 `main` 后由 `.github/workflows/deploy.yml` 自动构建并发布到 `https://shajiuquan.github.io/company-site/`。`astro.config.mjs` 的 `site` / `base` 决定站点地址与仓库路径，换仓库时同时修改。Gitee Pages 目前已下架，需要时参考 Gitee 当时的官方说明，把 `dist/` 内容发布到静态分支。
